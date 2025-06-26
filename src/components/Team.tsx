@@ -1,5 +1,8 @@
+'use client'
+
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
+import { useInView } from "@/lib/useInView";
 
 const team = [
   {
@@ -25,10 +28,16 @@ const team = [
 ];
 
 export default function Team() {
+  const [ref, inView] = useInView({ threshold: 0.2 });
   return (
-    <section className="w-full py-16 bg-white flex flex-col items-center">
-          <h2 className="text-4xl font-bold text-center mb-2 text-gray-800">Notre Équipe</h2>
-          <p className="text-center max-w-2xl mx-auto text-gray-800 mb-10 text-lg px-4 py-4">
+    <section
+      ref={ref}
+      className={`w-full py-16 bg-white flex flex-col items-center transition-all duration-700
+        ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
+      `}
+    >
+      <h2 className="text-4xl font-bold text-center mb-2 text-gray-800">Notre Equipe</h2>
+      <p className="text-center max-w-2xl mx-auto text-gray-800 mb-10 text-lg px-4 py-4">
         Notre équipe est à votre service pour transmettre ses conseils sur l'aménagement de vos parterres et de votre jardin. N'hésitez pas à solliciter notre aide pour le choix des végétaux mais également pour toutes les questions relatives à la plantation, l'entretien, la lutte contre les maladies et les ravageurs, ...
       </p>
       <div className="w-full flex justify-center">
