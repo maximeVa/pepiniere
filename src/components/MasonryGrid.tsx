@@ -10,7 +10,7 @@ interface MasonryGridProps {
 }
 
 const MasonryGrid: React.FC<MasonryGridProps> = ({ images = [] }) => (
-  <div className="w-full px-2 md:px-4 lg:px-32 columns-2 md:columns-3 lg:columns-4 gap-4">
+  <div className="w-full px-4 md:px-25 lg:px-40 xl:px-80 columns-2 md:columns-3 lg:columns-4 gap-4">
     {images.map((img, i) => (
       <img
         key={i}
