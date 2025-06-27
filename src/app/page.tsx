@@ -1,6 +1,7 @@
 import Carousel from '@/components/Carousel'
 import { playfair } from './layout'
 import Team from '@/components/Team'
+import MasonryGrid from '@/components/MasonryGrid'
 
 export default function HomePage() {
   return (
@@ -59,6 +60,39 @@ export default function HomePage() {
 
       {/* Section Team (Notre Équipe) */}
       <Team />
+
+      {/* Titre galerie masonry */}
+      <div className="w-full flex flex-col items-center mt-12 mb-6">
+        <h2 className="text-2xl md:text-3xl font-semibold text-center">La pépinière en quelque photos ...</h2>
+      </div>
+
+      {/* Section Galerie Masonry */}
+      <section className="py-12 md:py-20">
+        <MasonryGrid
+          columns={[
+            [
+              { src: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" },
+              { src: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" },
+              { src: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" },
+            ],
+            [
+              { src: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" },
+              { src: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" },
+              { src: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" },
+            ],
+            [
+              { src: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" },
+              { src: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" },
+              { src: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" },
+            ],
+            [
+              { src: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" },
+              { src: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" },
+              { src: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" },
+            ],
+          ]}
+        />
+      </section>
     </main>
   )
 }
