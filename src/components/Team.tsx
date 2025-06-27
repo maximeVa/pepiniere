@@ -36,9 +36,14 @@ export default function Team() {
         ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
       `}
     >
-      <h2 className="text-4xl font-bold text-center mb-2 text-gray-800">Notre Equipe</h2>
-      <p className="text-center max-w-2xl mx-auto text-gray-800 mb-10 text-lg px-4 py-4">
-        Notre équipe est à votre service pour transmettre ses conseils sur l'aménagement de vos parterres et de votre jardin. N'hésitez pas à solliciter notre aide pour le choix des végétaux mais également pour toutes les questions relatives à la plantation, l'entretien, la lutte contre les maladies et les ravageurs, ...
+      <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-2 text-green-700">Notre Équipe</h2>
+      <div className="w-16 h-1 bg-gradient-to-r from-green-400 to-green-700 rounded-full mb-4"></div>
+      <p className="text-lg md:text-xl text-center text-gray-700 max-w-2xl mb-2 font-medium">
+        Rencontrez notre équipe passionnée
+      </p>
+      <p className="text-base text-center text-gray-500 max-w-2xl mb-10">
+        Chez <span className="font-semibold text-green-700">Pépinière Saint-Michel</span>, chaque membre partage la même passion : vous accompagner dans la création d'un jardin qui vous ressemble.<br />
+        Profitez de nos conseils personnalisés, de notre expertise et de notre amour des plantes pour faire fleurir tous vos projets.
       </p>
       <div className="w-full flex justify-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-6xl px-2 sm:px-4 md:px-6">
