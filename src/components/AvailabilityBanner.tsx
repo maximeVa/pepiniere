@@ -100,7 +100,7 @@ export default function AvailabilityBanner({
     return (
         <section className={clsx(
             "relative isolate overflow-hidden",
-            "my-8 sm:my-12 md:my-16",
+            "my-4 sm:my-6 md:my-8",
             "rounded-none",
             "min-h-[280px] sm:min-h-[320px] md:min-h-[340px] lg:min-h-[360px]",
             className,
