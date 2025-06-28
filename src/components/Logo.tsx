@@ -6,7 +6,7 @@ export default function Logo() {
     <div className="flex items-center space-x-2 sm:space-x-3">
       <Link href="/" className="relative flex-shrink-0 group">
         <Image
-          src="/logo.png"
+          src="/home/logo.png"
           alt="Les Jardins St Michel"
           width={120}
           height={45}
@@ -17,7 +17,7 @@ export default function Logo() {
       </Link>
       <div className="sm:block whitespace-nowrap">
         <span className="text-white font-medium tracking-wider uppercase text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl transition-all duration-300">
-          La Pépinière <span className="sm:ml-2">Saint‑Michel</span>
+          La Pépinière Saint‑Michel
         </span>
       </div>
     </div>

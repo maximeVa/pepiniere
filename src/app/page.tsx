@@ -2,7 +2,8 @@ import Carousel from '@/components/Carousel'
 import { playfair } from './layout'
 import Team from '@/components/Team'
 import MasonryGrid from '@/components/MasonryGrid'
-import Services from '@/components/Services' // Nouveau composant
+import Services from '@/components/Services'
+import AvailabilityBanner from '@/components/AvailabilityBanner'
 
 export default function HomePage() {
   return (
@@ -64,20 +65,37 @@ export default function HomePage() {
         services={[
           {
             title: 'Aménagement paysager',
-            image: '/background.jpg',
+            image: '/carousel/background.jpg',
             href: '/services/amenagement',
           },
           {
             title: 'Conseils personnalisés',
-            image: '/backgroundV2.jpg',
+            image: '/carousel/backgroundV2.jpg',
             href: '/services/conseils',
           },
           {
             title: 'Plantation saisonnière',
-            image: '/background.jpg',
+            image: '/carousel/background.jpg',
             href: '/services/plantation',
           },
         ]}
+      />
+
+      <AvailabilityBanner
+        imageUrl="/home/availabilityBanner.jpg"
+        title="Nos experts sont disponibles pour vous accompagner"
+        subtitle="Profitez de nos conseils personnalisés et de notre expertise"
+        phone="0474 55 93 73"
+        workingHours={{
+          lundi: "fermé",
+          mardi: "fermé",
+          mercredi: "9h00 - 18h00",
+          jeudi: "9h00 - 18h00",
+          vendredi: "9h00 - 18h00",
+          samedi: "9h00 - 18h00",
+          dimanche: "9h00 - 13h00"
+        }}
+        address="1 Chaussée de Jodoigne 1315 Glimes"
       />
 
       {/* Section Team (Notre Équipe) */}

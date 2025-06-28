@@ -16,9 +16,9 @@ const fullScreenStyles = {
 const Carousel = () => {
     const slideData = useCallback((): React.ReactNode[] => {
         const dataList = [
-            { id: 1, imageUrl: '/heruSectionBackground.jpg', desc: 'Blueberry' },
-            { id: 2, imageUrl: '/backgroundV2.jpg', desc: 'Berry' },
-            { id: 3, imageUrl: '/background.jpg', desc: 'Aam' },
+            { id: 1, imageUrl: '/carousel/heruSectionBackground.jpg', desc: 'Blueberry' },
+            { id: 2, imageUrl: '/carousel/backgroundV2.jpg', desc: 'Berry' },
+            { id: 3, imageUrl: '/carousel/background.jpg', desc: 'Aam' },
         ]
 
         return dataList.map(({ id, imageUrl, desc }) => (
