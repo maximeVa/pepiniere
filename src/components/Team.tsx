@@ -2,7 +2,6 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
-import { useInView } from "@/lib/useInView";
 import { playfair } from '../app/fonts';
 
 const team = [
@@ -29,21 +28,15 @@ const team = [
 ];
 
 export default function Team() {
-  const [ref, inView] = useInView({ threshold: 0.2 });
   return (
-    <section
-      ref={ref}
-      className={`w-full py-16 bg-white flex flex-col items-center transition-all duration-700
-        ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
-      `}
-    >
+    <section className="w-full py-16 bg-white flex flex-col items-center">
       <h2 className={`text-4xl md:text-5xl text-center mb-2 text-green-700 ${playfair.className}`}>Notre Équipe</h2>
       <div className="w-16 h-1 bg-gradient-to-r from-green-400 to-green-700 rounded-full mb-4"></div>
       <p className="text-lg md:text-xl text-center text-gray-700 max-w-2xl mb-2 font-medium">
         Rencontrez notre équipe passionnée
       </p>
       <p className="text-base text-center text-gray-500 max-w-2xl mb-10">
-        Chez <span className="font-semibold text-green-700">Pépinière Saint-Michel</span>, chaque membre partage la même passion : vous accompagner dans la création d'un jardin qui vous ressemble.<br />
+        Chez <span className="font-semibold text-green-700">Pépinière Saint-Michel</span>, chaque membre partage la même passion : vous accompagner dans la création d'un jardin qui vous ressemble.<br />
         Profitez de nos conseils personnalisés, de notre expertise et de notre amour des plantes pour faire fleurir tous vos projets.
       </p>
       <div className="w-full flex justify-center">
@@ -52,7 +45,6 @@ export default function Team() {
             <Card
               key={member.name}
               className="flex flex-col items-center p-8 bg-white/90 border border-gray-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group"
-              style={{ animationDelay: `${idx * 120}ms` }}
             >
               <div className="w-44 h-44 mb-4 rounded-full overflow-hidden border-4 border-gray-200 transition-transform duration-300 hover:scale-105 will-change-transform shadow-md">
                 <Image

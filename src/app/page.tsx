@@ -64,18 +64,18 @@ export default function HomePage() {
       <Services
         services={[
           {
-            title: 'Aménagement paysager',
-            image: '/carousel/background.jpg',
+            title: 'Conseils à domicile',
+            image: '/background.jpg',
             href: '/services/amenagement',
           },
           {
-            title: 'Conseils personnalisés',
-            image: '/carousel/backgroundV2.jpg',
+            title: 'Service de livraison',
+            image: '/backgroundV2.jpg',
             href: '/services/conseils',
           },
           {
-            title: 'Plantation saisonnière',
-            image: '/carousel/background.jpg',
+            title: 'Location de plantes',
+            image: '/background.jpg',
             href: '/services/plantation',
           },
         ]}
