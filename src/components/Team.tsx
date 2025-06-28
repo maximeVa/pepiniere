@@ -3,6 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { useInView } from "@/lib/useInView";
+import { playfair } from '../app/fonts';
 
 const team = [
   {
@@ -36,7 +37,7 @@ export default function Team() {
         ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
       `}
     >
-      <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-2 text-green-700">Notre Équipe</h2>
+      <h2 className={`text-4xl md:text-5xl text-center mb-2 text-green-700 ${playfair.className}`}>Notre Équipe</h2>
       <div className="w-16 h-1 bg-gradient-to-r from-green-400 to-green-700 rounded-full mb-4"></div>
       <p className="text-lg md:text-xl text-center text-gray-700 max-w-2xl mb-2 font-medium">
         Rencontrez notre équipe passionnée
@@ -64,7 +65,7 @@ export default function Team() {
               </div>
               <div className="w-16 border-b border-gray-200 mb-4" />
               <CardContent className="flex flex-col items-center p-0">
-                <span className="text-xl font-bold text-gray-800 text-center leading-tight">
+                <span className={`text-xl font-bold text-gray-800 text-center leading-tight ${playfair.className}`}>
                   {member.name}
                 </span>
                 <span className="text-sm text-gray-500 mt-2 text-center">
