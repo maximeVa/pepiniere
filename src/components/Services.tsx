@@ -23,7 +23,7 @@ const Services: React.FC<ServicesProps> = ({
     ]
 }) => {
     return (
-        <section className="py-16 md:py-24 px-4 bg-white">
+        <section className="py-16 md:py-24 px-2 sm:px-4 md:px-6 bg-white">
             <div className="max-w-7xl mx-auto text-center mb-16">
                 <h2 className={`text-4xl md:text-5xl lg:text-6xl font-normal text-gray-900 mb-6 ${playfair.className}`}>
                     Nos services
