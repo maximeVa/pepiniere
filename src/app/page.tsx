@@ -2,6 +2,7 @@ import Carousel from '@/components/Carousel'
 import { playfair } from './layout'
 import Team from '@/components/Team'
 import MasonryGrid from '@/components/MasonryGrid'
+import Services from '@/components/Services' // Nouveau composant
 
 export default function HomePage() {
   return (
@@ -57,6 +58,27 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Section Services - NOUVEAU */}
+      <Services
+        services={[
+          {
+            title: 'Aménagement paysager',
+            image: '/background.jpg',
+            href: '/services/amenagement',
+          },
+          {
+            title: 'Conseils personnalisés',
+            image: '/backgroundV2.jpg',
+            href: '/services/conseils',
+          },
+          {
+            title: 'Plantation saisonnière',
+            image: '/background.jpg',
+            href: '/services/plantation',
+          },
+        ]}
+      />
 
       {/* Section Team (Notre Équipe) */}
       <Team />
