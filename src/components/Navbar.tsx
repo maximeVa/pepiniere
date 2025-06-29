@@ -10,9 +10,11 @@ export default function Navbar() {
             {/* Menu desktop */}
             <ul className="hidden lg:flex space-x-8">
                 {[
-                    { href: '#about', label: 'À PROPOS' },
-                    { href: '#services', label: 'SERVICES' },
-                    { href: '#contact', label: 'CONTACT' },
+                    { href: '#', label: 'ACCUEIL' },
+                    { href: '#pepinere', label: 'LA PÉPINIÈRE' },
+                    { href: '#paysagisme', label: 'PAYSAGISME' },
+                    { href: '#euroserre', label: 'EUROSERRE' },
+                    { href: '#commande', label: 'PASSER COMMANDE' },
                 ].map((item) => (
                     <li key={item.href}>
                         <Link 
