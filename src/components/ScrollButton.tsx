@@ -1,7 +1,5 @@
 "use client"
 
-import { playfair } from '../app/fonts'
-
 interface ScrollButtonProps {
   targetId: string;
   children: React.ReactNode;
