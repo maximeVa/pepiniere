@@ -23,7 +23,7 @@
         ]
     }) => {
         return (
-            <section className="py-8 md:py-16 px-2 sm:px-4 md:px-6 bg-white">
+            <section id="services" className="py-8 md:py-16 px-2 sm:px-4 md:px-6 bg-white">
                 <div className="max-w-7xl mx-auto text-center mb-16">
                     <h2 className={`text-4xl md:text-5xl lg:text-6xl font-normal text-gray-900 mb-6 ${playfair.className}`}>
                         Nos services

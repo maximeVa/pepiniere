@@ -4,6 +4,7 @@ import Team from '@/components/Team'
 import MasonryGrid from '@/components/MasonryGrid'
 import Services from '@/components/Services'
 import AvailabilityBanner from '@/components/AvailabilityBanner'
+import ScrollButton from '@/components/ScrollButton'
 
 export default function HomePage() {
   return (
@@ -37,18 +38,22 @@ export default function HomePage() {
               nature et conseils personnalisés s'unissent pour donner vie à vos projets de jardin.
             </p>
             <div className="mt-8 sm:mt-10 md:mt-12 animate-in fade-in duration-1000 slide-in-from-bottom-8 delay-600">
-              <button className={`
-                px-6 sm:px-8 py-3 sm:py-4 
-                bg-white/10 hover:bg-white/20 
-                border-2 border-white/30 hover:border-white/50
-                text-white font-medium text-sm sm:text-base
-                rounded-lg backdrop-blur-sm
-                transition-all duration-300 hover:scale-105
-                focus:outline-none focus:ring-2 focus:ring-white/50
-                ${playfair.className}
-              `}>
+              <ScrollButton
+                targetId="services"
+                className={`
+                  px-6 sm:px-8 py-3 sm:py-4 
+                  bg-white/10 hover:bg-white/20 
+                  border-2 border-white/30 hover:border-white/50
+                  text-white font-medium text-sm sm:text-base
+                  rounded-lg backdrop-blur-sm
+                  transition-all duration-300 hover:scale-105
+                  focus:outline-none focus:ring-2 focus:ring-white/50
+                  cursor-pointer
+                  ${playfair.className}
+                `}
+              >
                 Découvrir nos services
-              </button>
+              </ScrollButton>
             </div>
           </div>
         </div>
