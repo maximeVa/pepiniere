@@ -6,6 +6,7 @@ import Services from '@/components/Services'
 import AvailabilityBanner from '@/components/AvailabilityBanner'
 import ScrollButton from '@/components/ScrollButton'
 import EntrepreneurBanner from "../components/EntrepreneurBanner";
+import Footer from '@/components/Footer'
 
 export default function HomePage() {
   return (
@@ -125,6 +126,8 @@ export default function HomePage() {
           ]}
         />
       </section>
+
+      <Footer/>
     </main>
   )
 }
