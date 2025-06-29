@@ -70,17 +70,17 @@ export default function HomePage() {
         services={[
           {
             title: 'Conseils à domicile',
-            image: '/carousel/background.jpg',
+            image: '/services/homeAdvice.avif',
             href: '/services/amenagement',
           },
           {
             title: 'Service de livraison',
-            image: '/carousel/backgroundV2.jpg',
+            image: '/services/delivery.avif',
             href: '/services/conseils',
           },
           {
             title: 'Location de plantes',
-            image: '/carousel/background.jpg',
+            image: '/services/rentPlant.avif',
             href: '/services/plantation',
           },
         ]}
