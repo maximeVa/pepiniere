@@ -5,6 +5,7 @@ import MasonryGrid from '@/components/MasonryGrid'
 import Services from '@/components/Services'
 import AvailabilityBanner from '@/components/AvailabilityBanner'
 import ScrollButton from '@/components/ScrollButton'
+import EntrepreneurBanner from "../components/EntrepreneurBanner";
 
 export default function HomePage() {
   return (
@@ -88,23 +89,17 @@ export default function HomePage() {
 
       <AvailabilityBanner
         imageUrl="/home/availabilityBanner.jpg"
-        title="Nos experts sont disponibles pour vous accompagner"
-        subtitle="Profitez de nos conseils personnalisés et de notre expertise"
-        phone="0474 55 93 73"
-        workingHours={{
-          lundi: "fermé",
-          mardi: "fermé",
-          mercredi: "9h00 - 18h00",
-          jeudi: "9h00 - 18h00",
-          vendredi: "9h00 - 18h00",
-          samedi: "9h00 - 18h00",
-          dimanche: "9h00 - 13h00"
-        }}
-        address="1 Chaussée de Jodoigne 1315 Glimes"
+        title="Nos jardiniers sont disponibles du mercredi au dimanche"
+        subtitle="Contactez-nous pour toute demande ou prise de rendez-vous."
+        phone="+32 10 65 54 44"
       />
 
       {/* Section Team (Notre Équipe) */}
       <Team />
+
+      <EntrepreneurBanner
+        imageUrl="/home/availabilityBanner.jpg"
+      />
 
       {/* Titre galerie masonry */}
       <div className="w-full flex flex-col items-center mt-12 mb-6">
