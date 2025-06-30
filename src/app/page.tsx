@@ -104,7 +104,7 @@ export default function HomePage() {
 
       {/* Titre galerie masonry */}
       <div className="w-full flex flex-col items-center mt-12 mb-6">
-        <h2 className="text-2xl md:text-3xl font-semibold text-center">La pépinière en quelque photos ...</h2>
+        <h2 className="text-2xl md:text-3xl font-semibold text-center">La pépinière en quelques photos ...</h2>
       </div>
 
       {/* Section Galerie Masonry */}
