@@ -35,7 +35,12 @@ export default function Navbar({ scrolled = false, headerHeight = 0 }: { scrolle
                     variant="ghost"
                     size="sm"
                     className={`p-2 transition-colors duration-300 hover:bg-white/10 ${scrolled ? 'text-gray-900' : 'text-white'}`}
-                    onClick={() => setMobileOpen((open) => !open)}
+                    onClick={() => {
+                        if (typeof window !== 'undefined' && (window as any).updateHeaderHeight) {
+                            (window as any).updateHeaderHeight();
+                        }
+                        setMobileOpen((open) => !open);
+                    }}
                     aria-label={mobileOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
                 >
                     {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

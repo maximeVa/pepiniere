@@ -16,9 +16,18 @@ export default function Header() {
   }, []);
 
   useLayoutEffect(() => {
-    if (headerRef.current) {
-      setHeaderHeight(headerRef.current.getBoundingClientRect().height);
+    if (!headerRef.current) return;
+    function updateHeaderHeight() {
+      if (headerRef.current) {
+        setHeaderHeight(headerRef.current.getBoundingClientRect().height);
+      }
     }
+    updateHeaderHeight();
+    const observer = new window.ResizeObserver(updateHeaderHeight);
+    observer.observe(headerRef.current);
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   return (
