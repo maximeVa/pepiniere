@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { DialogClose } from '@radix-ui/react-dialog'
 import { X } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 const menuItems = [
     { href: '/', label: 'Accueil' },
@@ -21,6 +22,13 @@ type MobileMenuProps = {
 };
 
 export default function MobileMenu({ navbarHeight, onClose }: MobileMenuProps) {
+    const router = useRouter();
+
+    const handleNavigate = (href: string) => {
+        if (onClose) onClose();
+        router.push(href);
+    };
+
     return (
         <motion.div
             initial={{ clipPath: 'inset(0 0 100% 0)' }}
@@ -52,13 +60,13 @@ export default function MobileMenu({ navbarHeight, onClose }: MobileMenuProps) {
                             animate={{ x: 0, opacity: 1 }}
                             transition={{ delay: index * 0.1 + 0.3 }}
                         >
-                            <Link
-                                href={item.href}
+                            <button
+                                type="button"
                                 className="block py-3 px-4 text-xl font-medium text-white hover:bg-green-800 rounded-lg transition-colors duration-300 text-center w-full"
-                                onClick={onClose}
+                                onClick={() => handleNavigate(item.href)}
                             >
                                 {item.label}
-                            </Link>
+                            </button>
                         </motion.li>
                     ))}
                 </ul>
