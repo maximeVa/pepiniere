@@ -35,7 +35,7 @@ export default function Navbar({ scrolled = false }: { scrolled?: boolean }) {
                         <Button 
                             variant="ghost" 
                             size="sm"
-                            className="p-2 text-white hover:bg-white/10 transition-colors duration-300"
+                            className={`p-2 transition-colors duration-300 hover:bg-white/10 ${scrolled ? 'text-gray-900' : 'text-white'}`}
                         >
                             <Menu className="w-6 h-6" />
                             <span className="sr-only">Ouvrir le menu</span>
