@@ -15,9 +15,15 @@ export default function Logo({ className = '', scrolled = false }: { className?:
           priority
         />
       </Link>
-      <div className="sm:block whitespace-nowrap">
-        <span className={`${scrolled ? 'text-gray-900' : 'text-white'} font-medium tracking-wider uppercase text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl transition-all duration-300`}>
-          Les Jardins Saint‑Michel
+      <div className="sm:block whitespace-nowrap ml-1 xs:ml-2">
+        <span className={
+          `${scrolled ? 'text-gray-900' : 'text-white'} font-medium tracking-wider uppercase text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl transition-all duration-300`
+        }>
+          <span className="hidden [@media(min-width:350px)]:inline">Les Jardins Saint‑Michel</span>
+          <span className="inline [@media(min-width:350px)]:hidden">
+            <span className="block leading-tight">Les Jardins</span>
+            <span className="block leading-tight">Saint‑Michel</span>
+          </span>
         </span>
       </div>
     </div>
