@@ -7,9 +7,11 @@ import { DialogClose } from '@radix-ui/react-dialog'
 import { X } from 'lucide-react'
 
 const menuItems = [
-    { href: '#about', label: 'À propos' },
-    { href: '#services', label: 'Services' },
-    { href: '#contact', label: 'Contact' },
+    { href: '/', label: 'Accueil' },
+    { href: '/la-pepiniere', label: 'La pépinière' },
+    { href: '/paysagisme', label: 'Paysagisme' },
+    { href: '/euroserre', label: 'Euroserre' },
+    { href: '/commande', label: 'Passer commande' },
 ]
 
 export default function MobileMenu() {

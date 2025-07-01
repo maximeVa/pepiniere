@@ -29,7 +29,7 @@ const team = [
 
 export default function Team() {
   return (
-    <section className="w-full py-16 bg-white flex flex-col items-center">
+    <section className="w-full py-4 bg-white flex flex-col items-center">
       <h2 className={`text-4xl md:text-5xl text-center mb-2 text-green-700 ${playfair.className}`}>Notre Équipe</h2>
       <div className="w-16 h-1 bg-gradient-to-r from-green-400 to-green-700 rounded-full mb-4"></div>
       <p className="text-lg md:text-xl text-center text-gray-700 max-w-2xl mb-2 font-medium">
