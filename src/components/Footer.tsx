@@ -1,6 +1,6 @@
 import Logo from './Logo'
 import { playfair } from '@/app/layout'
-import { FaFacebookF, FaInstagram, FaYoutube, FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { MdLocationOn, MdAccessTime, MdPhone } from "react-icons/md";
 import Image from 'next/image'
 import Link from 'next/link'
@@ -99,13 +99,6 @@ export default function Footer() {
                 className="text-green-700 hover:text-green-800 text-xl hover:scale-110 transition-all duration-200 p-2 rounded-full hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-green-200"
               >
                 <FaInstagram />
-              </a>
-              <a
-                href="#"
-                aria-label="Découvrez notre chaîne YouTube"
-                className="text-green-700 hover:text-green-800 text-xl hover:scale-110 transition-all duration-200 p-2 rounded-full hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-green-200"
-              >
-                <FaYoutube />
               </a>
             </div>
             <div className="flex items-center text-gray-600 text-sm justify-center md:justify-start">
