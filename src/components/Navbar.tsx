@@ -4,7 +4,7 @@ import { Dialog, DialogTrigger, DialogContent, DialogTitle } from '@radix-ui/rea
 import MobileMenu from './MobileMenu'
 import { Menu } from 'lucide-react'
 
-export default function Navbar() {
+export default function Navbar({ scrolled = false }: { scrolled?: boolean }) {
     return (
         <nav className="flex items-center justify-end w-full">
             {/* Menu desktop */}
@@ -19,7 +19,8 @@ export default function Navbar() {
                     <li key={item.href}>
                         <Link 
                             href={item.href}
-                            className="relative text-white text-sm xl:text-base tracking-wide hover:text-white/80 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+                            className={`relative text-sm xl:text-base tracking-wide transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:transition-all after:duration-300 hover:after:w-full
+                                ${scrolled ? 'text-gray-900 hover:text-green-700 after:bg-green-700' : 'text-white hover:text-white/80 after:bg-white'}`}
                         >
                             {item.label}
                         </Link>

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function Logo({ className = '' }: { className?: string }) {
+export default function Logo({ className = '', scrolled = false }: { className?: string, scrolled?: boolean }) {
   return (
     <div className={`flex items-center space-x-2 sm:space-x-3 ${className}`}>
       <Link href="/" className="relative flex-shrink-0 group">
@@ -16,7 +16,7 @@ export default function Logo({ className = '' }: { className?: string }) {
         />
       </Link>
       <div className="sm:block whitespace-nowrap">
-        <span className="text-white font-medium tracking-wider uppercase text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl transition-all duration-300">
+        <span className={`${scrolled ? 'text-gray-900' : 'text-white'} font-medium tracking-wider uppercase text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl transition-all duration-300`}>
           Les Jardins Saint‑Michel
         </span>
       </div>
