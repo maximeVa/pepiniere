@@ -1,12 +1,13 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { Dialog, DialogTrigger, DialogContent, DialogTitle } from '@radix-ui/react-dialog'
 import MobileMenu from './MobileMenu'
-import { Menu } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
+import { useState } from 'react'
 
-export default function Navbar({ scrolled = false }: { scrolled?: boolean }) {
+export default function Navbar({ scrolled = false, headerHeight = 0 }: { scrolled?: boolean, headerHeight?: number }) {
+    const [mobileOpen, setMobileOpen] = useState(false);
     return (
-        <nav className="flex items-center justify-end w-full">
+        <nav className="w-full flex items-center justify-end">
             {/* Menu desktop */}
             <ul className="hidden lg:flex space-x-8">
                 {[
@@ -30,24 +31,16 @@ export default function Navbar({ scrolled = false }: { scrolled?: boolean }) {
 
             {/* Hamburger mobile */}
             <div className="lg:hidden ml-2">
-                <Dialog>
-                    <DialogTrigger asChild>
-                        <Button 
-                            variant="ghost" 
-                            size="sm"
-                            className={`p-2 transition-colors duration-300 hover:bg-white/10 ${scrolled ? 'text-gray-900' : 'text-white'}`}
-                        >
-                            <Menu className="w-6 h-6" />
-                            <span className="sr-only">Ouvrir le menu</span>
-                        </Button>
-                    </DialogTrigger>
-                    <DialogContent className="p-0 bg-transparent shadow-none border-none sm:max-w-none">
-                        <DialogTitle className="sr-only">
-                            Menu de navigation
-                        </DialogTitle>
-                        <MobileMenu />
-                    </DialogContent>
-                </Dialog>
+                <Button
+                    variant="ghost"
+                    size="sm"
+                    className={`p-2 transition-colors duration-300 hover:bg-white/10 ${scrolled ? 'text-gray-900' : 'text-white'}`}
+                    onClick={() => setMobileOpen((open) => !open)}
+                    aria-label={mobileOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+                >
+                    {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                </Button>
+                {mobileOpen && <MobileMenu navbarHeight={headerHeight} onClose={() => setMobileOpen(false)} />}
             </div>
         </nav>
     )

@@ -1,10 +1,11 @@
 'use client'
 
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { DialogClose } from '@radix-ui/react-dialog'
 import { X } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
 const menuItems = [
     { href: '/', label: 'Accueil' },
@@ -14,50 +15,50 @@ const menuItems = [
     { href: '/commande', label: 'Passer commande' },
 ]
 
-export default function MobileMenu() {
+type MobileMenuProps = {
+    navbarHeight: number;
+    onClose?: () => void;
+};
+
+export default function MobileMenu({ navbarHeight, onClose }: MobileMenuProps) {
     return (
         <motion.div
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed top-0 right-0 bottom-0 w-4/5 max-w-sm bg-white dark:bg-gray-900 shadow-2xl flex flex-col z-50"
+            initial={{ clipPath: 'inset(0 0 100% 0)' }}
+            animate={{ clipPath: 'inset(0 0 0% 0)' }}
+            exit={{ clipPath: 'inset(0 0 100% 0)' }}
+            transition={{
+                type: 'spring',
+                stiffness: 300,
+                damping: 30,
+                duration: 0.6
+            }}
+            style={{
+                position: 'fixed',
+                left: 0,
+                right: 0,
+                top: navbarHeight,
+                height: `calc(100vh - ${navbarHeight}px)`,
+                zIndex: 9999,
+            }}
+            className="bg-green-700 text-white shadow-2xl flex flex-col"
         >
-            {/* Header */}
-            <div className="flex justify-between items-center p-6 border-b border-gray-200 dark:border-gray-700">
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
-                    Menu
-                </h2>
-                <DialogClose asChild>
-                    <Button
-                        variant="ghost"
-                        size="sm"
-                        className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 p-2"
-                    >
-                        <X className="w-5 h-5" />
-                        <span className="sr-only">Fermer le menu</span>
-                    </Button>
-                </DialogClose>
-            </div>
-
             {/* Items */}
-            <nav className="flex-1 p-6">
-                <ul className="space-y-4">
+            <nav className="flex-1 p-6 flex flex-col items-center">
+                <ul className="space-y-4 w-full flex flex-col items-center">
                     {menuItems.map((item, index) => (
                         <motion.li
                             key={item.href}
                             initial={{ x: 50, opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
-                            transition={{ delay: index * 0.1 }}
+                            transition={{ delay: index * 0.1 + 0.3 }}
                         >
-                            <DialogClose asChild>
-                                <Link
-                                    href={item.href}
-                                    className="block py-3 px-4 text-lg font-medium text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-300"
-                                >
-                                    {item.label}
-                                </Link>
-                            </DialogClose>
+                            <Link
+                                href={item.href}
+                                className="block py-3 px-4 text-xl font-medium text-white hover:bg-green-800 rounded-lg transition-colors duration-300 text-center w-full"
+                                onClick={onClose}
+                            >
+                                {item.label}
+                            </Link>
                         </motion.li>
                     ))}
                 </ul>
