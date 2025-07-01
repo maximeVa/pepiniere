@@ -20,7 +20,7 @@ export default function Footer() {
                 alt="Les Jardins St Michel"
                 width={180}
                 height={70}
-                className="w-40 h-auto mb-2 md:w-32 md:h-20 lg:w-40 xl:w-48 drop-shadow-lg rounded-lg border-2 border-white/80 transition-all duration-300 group-hover:border-white group-hover:scale-105"
+                className="w-40 h-auto mb-2 md:w-32 md:h-20 lg:w-40 xl:w-48 drop-shadow-lg rounded-lg border border-gray-400/60 transition-all duration-300 group-hover:border-gray-600/60 group-hover:scale-105"
                 priority
               />
             </Link>
