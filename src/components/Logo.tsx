@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function Logo() {
+export default function Logo({ className = '' }: { className?: string }) {
   return (
-    <div className="flex items-center space-x-2 sm:space-x-3">
+    <div className={`flex items-center space-x-2 sm:space-x-3 ${className}`}>
       <Link href="/" className="relative flex-shrink-0 group">
         <Image
           src="/home/logo.png"
@@ -17,7 +17,7 @@ export default function Logo() {
       </Link>
       <div className="sm:block whitespace-nowrap">
         <span className="text-white font-medium tracking-wider uppercase text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl transition-all duration-300">
-          La Pépinière Saint‑Michel
+          Les Jardins Saint‑Michel
         </span>
       </div>
     </div>
