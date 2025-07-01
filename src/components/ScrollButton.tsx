@@ -9,11 +9,14 @@ interface ScrollButtonProps {
 const ScrollButton: React.FC<ScrollButtonProps> = ({ targetId, children, className = "" }) => {
   const scrollToTarget = () => {
     const targetSection = document.getElementById(targetId);
+    const header = document.querySelector('header');
+    let yOffset = 0;
+    if (header) {
+      yOffset = -header.getBoundingClientRect().height;
+    }
     if (targetSection) {
-      targetSection.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
+      const y = targetSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
   };
 
