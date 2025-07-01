@@ -9,7 +9,7 @@ export default function Navbar({ scrolled = false, headerHeight = 0 }: { scrolle
     return (
         <nav className="w-full flex items-center justify-end">
             {/* Menu desktop */}
-            <ul className="hidden lg:flex space-x-8">
+            <ul className="hidden lg:flex md:space-x-6 lg:space-x-8">
                 {[
                     { href: '/', label: 'ACCUEIL' },
                     { href: '/la-pepiniere', label: 'LA PÉPINIÈRE' },
