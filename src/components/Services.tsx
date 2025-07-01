@@ -33,9 +33,9 @@
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-6 lg:gap-8">
                     {services.map((svc, idx) => (
-                        <div key={idx}>
+                        <div key={idx} className="mb-6 sm:mb-0">
                             <div className="group">
                                 <Link
                                     href={svc.href}
