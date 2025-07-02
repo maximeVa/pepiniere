@@ -4,7 +4,7 @@ import MobileMenu from './MobileMenu'
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 
-export default function Navbar({ scrolled = false, headerHeight = 0 }: { scrolled?: boolean, headerHeight?: number }) {
+export default function Navbar({ scrolled = false, headerHeight = 0, onMobileMenuOpen }: { scrolled?: boolean, headerHeight?: number, onMobileMenuOpen?: (open: boolean) => void }) {
     const [mobileOpen, setMobileOpen] = useState(false);
     return (
         <nav className="w-full flex items-center justify-end">
@@ -39,13 +39,20 @@ export default function Navbar({ scrolled = false, headerHeight = 0 }: { scrolle
                         if (typeof window !== 'undefined' && (window as any).updateHeaderHeight) {
                             (window as any).updateHeaderHeight();
                         }
-                        setMobileOpen((open) => !open);
+                        setMobileOpen((open) => {
+                            const newOpen = !open;
+                            if (onMobileMenuOpen) onMobileMenuOpen(newOpen);
+                            return newOpen;
+                        });
                     }}
                     aria-label={mobileOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
                 >
                     {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                 </Button>
-                {mobileOpen && <MobileMenu navbarHeight={headerHeight} onClose={() => setMobileOpen(false)} />}
+                {mobileOpen && <MobileMenu navbarHeight={headerHeight} onClose={() => {
+                    setMobileOpen(false);
+                    if (onMobileMenuOpen) onMobileMenuOpen(false);
+                }} />}
             </div>
         </nav>
     )
