@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Team from '@/components/Team';
 import { playfair } from '../layout';
 import Footer from '@/components/Footer';
+import MasonryGrid from '@/components/MasonryGrid';
 
 export default function LaPepiniere() {
   return (
@@ -68,15 +69,21 @@ export default function LaPepiniere() {
       {/* Galerie masonry en bas */}
       <section className="w-full py-16 bg-green-50">
         <h2 className={`text-2xl md:text-3xl font-semibold text-center text-green-900 mb-8 ${playfair.className}`}>La pépinière en quelques photos ...</h2>
-        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 px-4">
-          <Image src="/masonry/1.avif" alt="Photo 1" width={400} height={300} className="rounded-xl object-cover w-full h-48 md:h-56" />
-          <Image src="/masonry/2.avif" alt="Photo 2" width={400} height={300} className="rounded-xl object-cover w-full h-48 md:h-56" />
-          <Image src="/masonry/3.avif" alt="Photo 3" width={400} height={300} className="rounded-xl object-cover w-full h-48 md:h-56" />
-          <Image src="/masonry/4.avif" alt="Photo 4" width={400} height={300} className="rounded-xl object-cover w-full h-48 md:h-56" />
-          <Image src="/masonry/5.avif" alt="Photo 5" width={400} height={300} className="rounded-xl object-cover w-full h-48 md:h-56" />
-          <Image src="/masonry/6.avif" alt="Photo 6" width={400} height={300} className="rounded-xl object-cover w-full h-48 md:h-56" />
-          <Image src="/masonry/7.jpg" alt="Photo 7" width={400} height={300} className="rounded-xl object-cover w-full h-48 md:h-56" />
-          <Image src="/masonry/8.jpg" alt="Photo 8" width={400} height={300} className="rounded-xl object-cover w-full h-48 md:h-56" />
+        <div className="py-12 md:py-20">
+          <MasonryGrid
+            images={[
+              { src: "/masonry/1.avif" },
+              { src: "/masonry/2.avif" },
+              { src: "/masonry/3.avif" },
+              { src: "/masonry/4.avif" },
+              { src: "/masonry/5.avif" },
+              { src: "/masonry/6.avif" },
+              { src: "/masonry/7.jpg" },
+              { src: "/masonry/8.jpg" },
+              { src: "/masonry/9.jpg" },
+              { src: "/masonry/10.jpg" },
+            ]}
+          />
         </div>
       </section>
 
