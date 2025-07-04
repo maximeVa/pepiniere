@@ -13,6 +13,7 @@ const buttonVariants = cva(
                 outline: "border border-input hover:bg-accent hover:text-accent-foreground",
                 secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
                 ghost: "hover:bg-accent hover:text-accent-foreground",
+                cta: "rounded-full px-8 py-4 text-lg font-semibold shadow-md bg-white/90 text-green-700 border border-green-600 hover:bg-green-600 hover:text-white hover:shadow-xl transition-all duration-400 ease-in-out focus:ring-2 focus:ring-green-400 focus:ring-offset-2 flex items-center gap-2 min-w-[220px] justify-center cursor-pointer",
             },
             size: {
                 sm: "h-8 px-3 text-sm",
