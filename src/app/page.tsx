@@ -15,7 +15,14 @@ export default function HomePage() {
       <section className="relative w-full h-[100vh] flex items-center justify-center overflow-hidden">
         {/* Background Carousel */}
         <div className="absolute inset-0 z-0">
-          <Carousel />
+          <Carousel
+            images={[
+              { src: '/carousel/heruSectionBackground.jpg', alt: 'Jardin 1' },
+              { src: '/carousel/backgroundV2.jpg', alt: 'Jardin 2' },
+              { src: '/carousel/background.jpg', alt: 'Jardin 3' },
+            ]}
+            className="absolute inset-0 w-full h-full object-cover brightness-60"
+          />
         </div>
         {/* Hero Content Overlay */}
         <div className="relative z-10 flex flex-col justify-center items-center text-center px-4 sm:px-6 md:px-8 lg:px-12 w-full h-full">

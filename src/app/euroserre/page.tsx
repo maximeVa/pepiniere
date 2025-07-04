@@ -5,6 +5,7 @@ import { FaceSmileIcon, AdjustmentsHorizontalIcon, CheckBadgeIcon } from '@heroi
 import CtaBanner from "@/components/CtaBanner";
 import { ArrowRight, Phone } from "lucide-react";
 import Footer from '@/components/Footer';
+import Carousel from '@/components/Carousel';
 
 export default function EuroserrePage() {
     return (
@@ -109,6 +110,20 @@ export default function EuroserrePage() {
                         </p>
                     </div>
                 </div>
+            </section>
+
+            {/* Carousel Euroserre */}
+            <section className="w-full max-w-3xl mx-auto mb-10">
+                <Carousel
+                    images={[
+                        { src: '/euroserre/1.jpg', alt: 'Serre Euroserre 1' },
+                        { src: '/euroserre/2.jpg', alt: 'Serre Euroserre 2' },
+                        { src: '/euroserre/3.jpg', alt: 'Serre Euroserre 3' },
+                        { src: '/euroserre/4.jpg', alt: 'Serre Euroserre 4' },
+                        { src: '/euroserre/5.jpg', alt: 'Serre Euroserre 5' },
+                    ]}
+                    className="w-full aspect-[4/3] sm:aspect-[16/9] rounded-2xl overflow-hidden shadow-lg"
+                />
             </section>
 
             {/* Bannière CTA Euroserre - Pleine largeur */}
