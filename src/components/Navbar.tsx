@@ -2,10 +2,15 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import MobileMenu from './MobileMenu'
 import { Menu, X } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function Navbar({ scrolled = false, headerHeight = 0, onMobileMenuOpen }: { scrolled?: boolean, headerHeight?: number, onMobileMenuOpen?: (open: boolean) => void }) {
     const [mobileOpen, setMobileOpen] = useState(false);
+
+    useEffect(() => {
+        if (onMobileMenuOpen) onMobileMenuOpen(mobileOpen);
+    }, [mobileOpen, onMobileMenuOpen]);
+
     return (
         <nav className="w-full flex items-center justify-end">
             {/* Menu desktop */}
@@ -39,11 +44,7 @@ export default function Navbar({ scrolled = false, headerHeight = 0, onMobileMen
                         if (typeof window !== 'undefined' && (window as any).updateHeaderHeight) {
                             (window as any).updateHeaderHeight();
                         }
-                        setMobileOpen((open) => {
-                            const newOpen = !open;
-                            if (onMobileMenuOpen) onMobileMenuOpen(newOpen);
-                            return newOpen;
-                        });
+                        setMobileOpen((open) => !open);
                     }}
                     aria-label={mobileOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
                 >
@@ -51,7 +52,6 @@ export default function Navbar({ scrolled = false, headerHeight = 0, onMobileMen
                 </Button>
                 {mobileOpen && <MobileMenu navbarHeight={headerHeight} onClose={() => {
                     setMobileOpen(false);
-                    if (onMobileMenuOpen) onMobileMenuOpen(false);
                 }} />}
             </div>
         </nav>
