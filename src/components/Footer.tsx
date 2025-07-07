@@ -30,38 +30,37 @@ export default function Footer() {
           {/* Bloc Contact */}
           <div className="flex flex-col items-center justify-center mb-8 md:mb-0">
             <h3 className={`text-lg font-semibold text-gray-900 mb-3 ${playfair.className}`}>Contact</h3>
-            <div className="flex flex-col gap-2 items-center">
+            <div className="flex flex-col gap-2 items-center text-center">
               <a
                 href="https://maps.google.com/?q=1+Chaussée+de+Jodoigne+1315+Glimes"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start text-gray-700 hover:text-green-700 transition-colors duration-200 group mb-1"
+                className="flex flex-col items-center text-gray-700 hover:text-green-700 transition-colors duration-200 group mb-1"
                 aria-label="Voir l'adresse sur Google Maps"
               >
-                <MdLocationOn className="mr-3 mt-0.5 text-green-700 text-xl flex-shrink-0 group-hover:scale-110 transition-transform duration-200" />
-                <span className="text-sm leading-relaxed text-left">
+                <span className="text-sm leading-relaxed text-center">
                   1 Chaussée de Jodoigne,<br />1315 Glimes
                 </span>
               </a>
               <a
                 href="tel:+3210655444"
-                className="flex items-center text-green-700 hover:text-green-800 hover:underline transition-colors duration-200 group"
+                className="flex flex-col items-center text-green-700 hover:text-green-800 hover:underline transition-colors duration-200 group"
                 aria-label="Appeler la pépinière"
               >
-                <MdPhone className="mr-3 text-green-700 text-lg flex-shrink-0 group-hover:scale-110 transition-transform duration-200" />
-                <span className="text-sm font-medium">+32 10 65 54 44</span>
+                <span className="text-sm font-medium text-center">+32 10 65 54 44</span>
               </a>
             </div>
           </div>
           {/* Bloc Horaires */}
           <div className="flex flex-col items-center justify-center mb-8 md:mb-0">
-            <h3 className={`text-lg font-semibold text-gray-900 mb-3 ${playfair.className}`}>Horaires</h3>
-            <div className="flex items-start justify-center text-gray-600 mb-1">
-              <MdAccessTime className="mr-2 mt-0.5 text-green-700 text-lg flex-shrink-0" />
-              <div className="text-sm leading-relaxed text-left">
-                <div>Mer–Sam : 9h–18h</div>
-                <div>Dim : 9h–13h</div>
-              </div>
+            <h3 className={`text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2 ${playfair.className}`}>
+              Horaires
+            </h3>
+            <div className="text-sm leading-relaxed text-center">
+              <div>Lun : Fermé</div>
+              <div>Mar : Fermé</div>
+              <div>Mer–Sam : 9h–18h</div>
+              <div>Dim : 9h–13h</div>
             </div>
           </div>
           {/* Bloc Suivez-nous */}
