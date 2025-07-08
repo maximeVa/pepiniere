@@ -16,7 +16,7 @@ export const EmblaThumb: React.FC<ThumbProps> = ({ selected, index, onClick, ima
       type="button"
       className={`w-full rounded-xl overflow-hidden border-2 transition-all duration-200 ${
         selected ? 'border-green-700 ring-2 ring-green-300' : 'border-gray-200'
-      }`}
+      } cursor-pointer`}
       tabIndex={selected ? 0 : -1}
       aria-label={`Voir la photo ${index + 1}`}
     >

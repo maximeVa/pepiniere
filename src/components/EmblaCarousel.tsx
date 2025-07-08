@@ -80,7 +80,7 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({ images, options, classNam
     <div className={`w-full ${className || ''}`}>
       {/* Carousel principal avec flèches positionnées relativement */}
       <div className="relative">
-        <div className="overflow-hidden rounded-2xl px-0 lg:px-32 xl:px-60 w-full" ref={emblaMainRef}>
+        <div className="overflow-hidden rounded-2xl px-0 lg:px-32 xl:px-60 w-full cursor-pointer" ref={emblaMainRef}>
           <div className="flex">
             {images.map((img, idx) => (
               <div
@@ -103,7 +103,7 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({ images, options, classNam
         {/* Flèches de navigation - positionnées par rapport au carousel */}
         <button
           onClick={scrollPrev}
-          className="absolute left-2 lg:left-8 xl:left-16 top-1/2 transform -translate-y-1/2 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl border border-gray-200 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+          className="absolute left-2 lg:left-8 xl:left-16 top-1/2 transform -translate-y-1/2 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl border border-gray-200 flex items-center justify-center transition-all duration-300 hover:scale-110 group cursor-pointer"
           aria-label="Image précédente"
         >
           <ChevronLeftIcon className="w-5 h-5 lg:w-6 lg:h-6 text-green-800 group-hover:text-green-900 transition-colors duration-300" />
@@ -111,7 +111,7 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({ images, options, classNam
 
         <button
           onClick={scrollNext}
-          className="absolute right-2 lg:right-8 xl:right-16 top-1/2 transform -translate-y-1/2 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl border border-gray-200 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+          className="absolute right-2 lg:right-8 xl:right-16 top-1/2 transform -translate-y-1/2 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl border border-gray-200 flex items-center justify-center transition-all duration-300 hover:scale-110 group cursor-pointer"
           aria-label="Image suivante"
         >
           <ChevronRightIcon className="w-5 h-5 lg:w-6 lg:h-6 text-green-800 group-hover:text-green-900 transition-colors duration-300" />
