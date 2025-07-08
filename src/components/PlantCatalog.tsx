@@ -165,7 +165,7 @@ export default function PlantCatalog({ families }: PlantCatalogProps) {
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             disabled={page === 1}
             aria-label="Page précédente"
-            className="rounded-full shadow-md"
+            className="rounded-full shadow-md cursor-pointer"
           >
             <span className="sr-only">Précédent</span>
             <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M13 16l-4-4 4-4" stroke="#166534" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -177,7 +177,7 @@ export default function PlantCatalog({ families }: PlantCatalogProps) {
               size="sm"
               onClick={() => setPage(i + 1)}
               aria-current={page === i + 1 ? "page" : undefined}
-              className="rounded-full shadow-md font-bold"
+              className="rounded-full shadow-md font-bold cursor-pointer"
             >
               {i + 1}
             </Button>
@@ -188,7 +188,7 @@ export default function PlantCatalog({ families }: PlantCatalogProps) {
             onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
             disabled={page === totalPages}
             aria-label="Page suivante"
-            className="rounded-full shadow-md"
+            className="rounded-full shadow-md cursor-pointer"
           >
             <span className="sr-only">Suivant</span>
             <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M7 4l4 4-4 4" stroke="#166534" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
