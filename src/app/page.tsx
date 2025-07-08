@@ -102,13 +102,6 @@ export default function HomePage() {
         phone="+32 10 65 54 44"
       />
 
-      {/* Section Team (Notre Équipe) */}
-      <Team />
-
-      <EntrepreneurBanner
-        imageUrl="/home/availabilityBanner.jpg"
-      />
-
       {/* Titre galerie masonry */}
       <div className="w-full flex flex-col items-center mt-12 mb-6">
         <h2 className="text-2xl md:text-3xl font-semibold text-center">La pépinière en quelques photos ...</h2>
@@ -133,6 +126,10 @@ export default function HomePage() {
           ]}
         />
       </section>
+
+      <EntrepreneurBanner
+        imageUrl="/home/availabilityBanner.jpg"
+      />
 
       <Footer/>
     </main>
