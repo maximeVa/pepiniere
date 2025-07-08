@@ -3,6 +3,7 @@
 import React, { useMemo, useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import ReactMarkdown from "react-markdown";
+import { usePathname } from 'next/navigation';
 
 export type PlantFamily = {
   id: number;
@@ -25,6 +26,10 @@ export default function PlantCatalog({ families }: PlantCatalogProps) {
   const [category, setCategory] = useState<string | null>(null);
   const [page, setPage] = useState(1);
   const filtersRef = useRef<HTMLDivElement | null>(null);
+  const searchBarRef = useRef<HTMLDivElement | null>(null);
+  // Pour ignorer le scroll au premier rendu
+  const isFirstRender = useRef(true);
+  const pathname = usePathname();
 
   const CATEGORIES = useMemo(() => Array.from(new Set(families.map((p: PlantFamily) => p.category))), [families]);
 
@@ -48,14 +53,24 @@ export default function PlantCatalog({ families }: PlantCatalogProps) {
 
   // Scroll to top of catalog on page change
   useEffect(() => {
-    if (filtersRef.current) {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    if (searchBarRef.current) {
       // Récupère dynamiquement la hauteur du header sticky
       const header = document.querySelector('header');
       const headerHeight = header ? header.getBoundingClientRect().height : 0;
-      const y = filtersRef.current.getBoundingClientRect().top + window.scrollY - headerHeight - 8; // 8px de marge
+      // On vise le haut de la barre de recherche, avec une marge supplémentaire (24px)
+      const y = searchBarRef.current.getBoundingClientRect().top + window.scrollY - headerHeight - 24;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
   }, [page]);
+
+  // Réinitialise le scroll ciblé à chaque navigation
+  useEffect(() => {
+    isFirstRender.current = true;
+  }, [pathname]);
 
   // Pills style for filters
   const pillBase =
@@ -66,7 +81,7 @@ export default function PlantCatalog({ families }: PlantCatalogProps) {
   return (
     <section className="w-full max-w-7xl mx-auto px-2 sm:px-4 md:px-8 py-12" aria-labelledby="catalogue-title">
       {/* Barre de recherche */}
-      <div className="flex justify-center mb-6">
+      <div ref={searchBarRef} className="flex justify-center mb-6">
         <input
           type="text"
           placeholder="Rechercher par nom..."
