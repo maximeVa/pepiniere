@@ -7,8 +7,6 @@ import AvailabilityBanner from '@/components/AvailabilityBanner'
 import ScrollButton from '@/components/ScrollButton'
 import EntrepreneurBanner from "../components/EntrepreneurBanner";
 import Footer from '@/components/Footer'
-import PlantCatalog from '@/components/PlantCatalog'
-import { plantFamilies } from '@/data/plant-catalog'
 
 export default function HomePage() {
   return (
@@ -75,9 +73,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Catalogue Plantes/Arbres */}
-      <PlantCatalog families={plantFamilies} />
 
       {/* Section Services - NOUVEAU */}
       <Services

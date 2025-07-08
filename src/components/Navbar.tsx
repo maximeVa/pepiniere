@@ -18,6 +18,7 @@ export default function Navbar({ scrolled = false, headerHeight = 0, onMobileMen
                 {[
                     { href: '/', label: 'ACCUEIL' },
                     { href: '/la-pepiniere', label: 'LA PÉPINIÈRE' },
+                    { href: '/catalogue', label: 'CATALOGUE' },
                     { href: '/paysagisme', label: 'PAYSAGISME' },
                     { href: '/euroserre', label: 'EUROSERRE' },
                     { href: '/commande', label: 'PASSER COMMANDE' },

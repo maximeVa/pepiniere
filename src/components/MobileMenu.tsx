@@ -7,6 +7,7 @@ import { useCallback, useMemo } from 'react'
 const menuItems = [
     { href: '/', label: 'Accueil' },
     { href: '/la-pepiniere', label: 'La pépinière' },
+    { href: '/catalogue', label: 'Catalogue' },
     { href: '/paysagisme', label: 'Paysagisme' },
     { href: '/euroserre', label: 'Euroserre' },
     { href: '/commande', label: 'Passer commande' },
