@@ -1,0 +1,171 @@
+"use client";
+
+import React, { useMemo, useState, useRef, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import ReactMarkdown from "react-markdown";
+
+export type PlantFamily = {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  category: string;
+  type: string;
+  slug: string;
+};
+
+export type PlantCatalogProps = {
+  families: PlantFamily[];
+};
+
+const ITEMS_PER_PAGE = 6;
+
+export default function PlantCatalog({ families }: PlantCatalogProps) {
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState<string | null>(null);
+  const [page, setPage] = useState(1);
+  const filtersRef = useRef<HTMLDivElement | null>(null);
+
+  const CATEGORIES = useMemo(() => Array.from(new Set(families.map((p: PlantFamily) => p.category))), [families]);
+
+  const filteredPlants = useMemo(() => {
+    return families.filter((plant: PlantFamily) => {
+      const matchSearch = plant.title.toLowerCase().includes(search.toLowerCase());
+      const matchCategory = category ? plant.category === category : true;
+      return matchSearch && matchCategory;
+    });
+  }, [search, category, families]);
+
+  // Pagination
+  const totalPages = Math.ceil(filteredPlants.length / ITEMS_PER_PAGE);
+  const paginatedPlants = filteredPlants.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
+
+  // Reset page on filter/search change
+  React.useEffect(() => { setPage(1); }, [search, category]);
+
+  // Scroll to top of catalog on page change
+  useEffect(() => {
+    if (filtersRef.current) {
+      // Récupère dynamiquement la hauteur du header sticky
+      const header = document.querySelector('header');
+      const headerHeight = header ? header.getBoundingClientRect().height : 0;
+      const y = filtersRef.current.getBoundingClientRect().top + window.scrollY - headerHeight - 8; // 8px de marge
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  }, [page]);
+
+  // Pills style for filters
+  const pillBase =
+    "inline-flex items-center px-3 py-1.5 md:px-4 md:py-2 rounded-full font-medium bg-white border border-gray-200 shadow-sm transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-green-200 text-gray-700";
+  const pillActive =
+    "!bg-green-600 !text-white !border-green-600 shadow-md";
+
+  return (
+    <section className="w-full max-w-7xl mx-auto px-2 sm:px-4 md:px-8 py-12" aria-labelledby="catalogue-title">
+      {/* Barre de filtres moderne en haut */}
+      <div ref={filtersRef} className="mb-10 flex flex-wrap gap-3 justify-center">
+        <button
+          className={`${pillBase} ${!category ? pillActive : ""} text-sm md:text-base`}
+          onClick={() => setCategory(null)}
+          aria-pressed={!category}
+        >
+          Toutes
+        </button>
+        {CATEGORIES.map((cat) => (
+          <button
+            key={cat}
+            className={`${pillBase} ${category === cat ? pillActive : ""} text-sm md:text-base`}
+            onClick={() => setCategory(cat)}
+            aria-pressed={category === cat}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+      {/* Grille éditoriale corrigée pour desktop */}
+      <div className="flex flex-col gap-8 w-full max-w-7xl mx-auto">
+        {paginatedPlants.length === 0 ? (
+          <div className="text-center text-muted-foreground py-12">
+            Aucun résultat pour ces filtres.
+          </div>
+        ) : (
+          paginatedPlants.map((plant: PlantFamily, idx) => (
+            <div
+              key={plant.id}
+              className="w-full max-w-4xl mx-auto bg-white/95 rounded-2xl border border-gray-100 flex flex-col md:flex-row-reverse items-stretch md:items-center gap-0 md:gap-0 shadow-none overflow-hidden"
+            >
+              {/* Image au-dessus sur mobile, à droite sur desktop */}
+              <div className="w-full md:w-1/2 flex items-center justify-center bg-gray-50 p-0 md:p-0">
+                <div className="w-full aspect-[4/3] md:aspect-[4/3] h-40 md:h-72 overflow-hidden flex items-center justify-center">
+                  <img
+                    src={plant.image}
+                    alt={plant.title}
+                    className="w-full h-full object-cover object-center rounded-none md:rounded-r-2xl border-0"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              {/* Texte en dessous sur mobile, à gauche sur desktop */}
+              <div className="w-full md:w-1/2 flex flex-col justify-center p-4 md:p-8">
+                <h3 className="text-xl md:text-3xl font-bold text-green-900 mb-2 md:mb-3 leading-tight">
+                  {plant.title}
+                </h3>
+                <ReactMarkdown
+                  components={{
+                    ul: ({node, ...props}) => <ul className="list-disc pl-6 mb-2" {...props} />,
+                    ol: ({node, ...props}) => <ol className="list-decimal pl-6 mb-2" {...props} />,
+                    li: ({node, ...props}) => <li className="mb-1" {...props} />,
+                    strong: ({node, ...props}) => <strong className="text-green-800 font-semibold" {...props} />,
+                    em: ({node, ...props}) => <em className="text-green-700" {...props} />,
+                    p: ({node, ...props}) => <p className="mb-2 text-sm md:text-base text-gray-800 leading-relaxed" {...props} />,
+                  }}
+                >
+                  {plant.description}
+                </ReactMarkdown>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+      {/* Pagination élégante */}
+      {totalPages > 1 && (
+        <div className="flex justify-center items-center gap-2 mt-10">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setPage((p) => Math.max(1, p - 1))}
+            disabled={page === 1}
+            aria-label="Page précédente"
+            className="rounded-full shadow-md"
+          >
+            <span className="sr-only">Précédent</span>
+            <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M13 16l-4-4 4-4" stroke="#166534" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </Button>
+          {Array.from({ length: totalPages }, (_, i) => (
+            <Button
+              key={i + 1}
+              variant={page === i + 1 ? "secondary" : "outline"}
+              size="sm"
+              onClick={() => setPage(i + 1)}
+              aria-current={page === i + 1 ? "page" : undefined}
+              className="rounded-full shadow-md font-bold"
+            >
+              {i + 1}
+            </Button>
+          ))}
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+            disabled={page === totalPages}
+            aria-label="Page suivante"
+            className="rounded-full shadow-md"
+          >
+            <span className="sr-only">Suivant</span>
+            <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M7 4l4 4-4 4" stroke="#166534" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </Button>
+        </div>
+      )}
+    </section>
+  );
+} 
