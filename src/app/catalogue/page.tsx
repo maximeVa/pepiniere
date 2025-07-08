@@ -22,6 +22,13 @@ export default function CataloguePage() {
           </p>
         </div>
       </section>
+      {/* Intro catalogue */}
+      <div className="w-full flex justify-center mt-10 mb-8 px-4">
+        <h2 className={`text-green-900 text-2xl md:text-3xl font-semibold text-center max-w-2xl mx-auto leading-snug ${playfair.className}`}
+            style={{letterSpacing: '-0.01em'}}>
+          Avec plus de 7000 espèces, notre pépinière est un véritable écrin de biodiversité.<br className="hidden md:block" /> En voici un aperçu.
+        </h2>
+      </div>
       <PlantCatalog families={plantFamilies} />
     </main>
   );
