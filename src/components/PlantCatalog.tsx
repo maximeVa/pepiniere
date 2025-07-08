@@ -30,7 +30,10 @@ export default function PlantCatalog({ families }: PlantCatalogProps) {
 
   const filteredPlants = useMemo(() => {
     return families.filter((plant: PlantFamily) => {
-      const matchSearch = plant.title.toLowerCase().includes(search.toLowerCase());
+      const matchSearch = (
+        plant.title.toLowerCase().includes(search.toLowerCase()) ||
+        plant.description.toLowerCase().includes(search.toLowerCase())
+      );
       const matchCategory = category ? plant.category === category : true;
       return matchSearch && matchCategory;
     });
@@ -62,6 +65,17 @@ export default function PlantCatalog({ families }: PlantCatalogProps) {
 
   return (
     <section className="w-full max-w-7xl mx-auto px-2 sm:px-4 md:px-8 py-12" aria-labelledby="catalogue-title">
+      {/* Barre de recherche */}
+      <div className="flex justify-center mb-6">
+        <input
+          type="text"
+          placeholder="Rechercher par nom..."
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          className="w-full max-w-md px-4 py-2 border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-green-200 text-base"
+          aria-label="Rechercher une plante par nom"
+        />
+      </div>
       {/* Barre de filtres moderne en haut */}
       <div ref={filtersRef} className="mb-10 flex flex-wrap gap-3 justify-center">
         <button
