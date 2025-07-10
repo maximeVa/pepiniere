@@ -7,8 +7,21 @@ import AvailabilityBanner from '@/components/AvailabilityBanner'
 import ScrollButton from '@/components/ScrollButton'
 import EntrepreneurBanner from "../components/EntrepreneurBanner";
 import Footer from '@/components/Footer'
+import { fetchCarouselImages } from '@/lib/carousel'
 
-export default function HomePage() {
+const FALLBACK_IMAGES = [
+  { src: '/carousel/heruSectionBackground.jpg', alt: 'Jardin 1' },
+  { src: '/carousel/backgroundV2.jpg', alt: 'Jardin 2' },
+  { src: '/carousel/background.jpg', alt: 'Jardin 3' },
+];
+
+export default async function HomePage() {
+  let carouselImages = FALLBACK_IMAGES;
+  const strapiImages = await fetchCarouselImages();
+  if (strapiImages.length > 0) {
+    carouselImages = strapiImages;
+  }
+
   return (
     <main className="w-full min-h-screen bg-white">
       {/* Hero Section avec Carousel en fond */}
@@ -16,11 +29,7 @@ export default function HomePage() {
         {/* Background Carousel */}
         <div className="absolute inset-0 z-0">
           <Carousel
-            images={[
-              { src: '/carousel/heruSectionBackground.jpg', alt: 'Jardin 1' },
-              { src: '/carousel/backgroundV2.jpg', alt: 'Jardin 2' },
-              { src: '/carousel/background.jpg', alt: 'Jardin 3' },
-            ]}
+            images={carouselImages}
             className="absolute inset-0 w-full h-full object-cover brightness-60"
           />
         </div>

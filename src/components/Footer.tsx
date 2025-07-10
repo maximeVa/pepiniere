@@ -4,8 +4,10 @@ import { FaFacebookF, FaInstagram, FaStar, FaStarHalfAlt } from "react-icons/fa"
 import { MdLocationOn, MdAccessTime, MdPhone } from "react-icons/md";
 import Image from 'next/image'
 import Link from 'next/link'
+import OpeningHours from './OpeningHours'
 
 export default function Footer() {
+
   return (
     <footer className="relative bg-gradient-to-t from-green-50/80 via-white/90 to-white/95 shadow-2xl rounded-t-3xl overflow-hidden animate-fade-in">
       {/* Overlay décoratif (optionnel) */}
@@ -56,12 +58,7 @@ export default function Footer() {
             <h3 className={`text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2 ${playfair.className}`}>
               Horaires
             </h3>
-            <div className="text-sm leading-relaxed text-center">
-              <div>Lun : Fermé</div>
-              <div>Mar : Fermé</div>
-              <div>Mer–Sam : 9h–18h</div>
-              <div>Dim : 9h–13h</div>
-            </div>
+            <OpeningHours />
           </div>
           {/* Bloc Suivez-nous */}
           <div className="flex flex-col items-center justify-center">
