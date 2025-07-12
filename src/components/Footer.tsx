@@ -37,7 +37,7 @@ export default function Footer() {
                 href="https://maps.google.com/?q=1+Chaussée+de+Jodoigne+1315+Glimes"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-col items-center text-gray-700 hover:text-green-700 transition-colors duration-200 group mb-1"
+                className="flex flex-col items-center text-gray-900 hover:text-green-900 hover:scale-105 transition-all duration-300 ease-out group mb-1"
                 aria-label="Voir l'adresse sur Google Maps"
               >
                 <span className="text-sm leading-relaxed text-center">
@@ -46,10 +46,10 @@ export default function Footer() {
               </a>
               <a
                 href="tel:+3210655444"
-                className="flex flex-col items-center text-green-700 hover:text-green-800 hover:underline transition-colors duration-200 group"
+                className="flex flex-col items-center text-gray-900 hover:text-green-900 hover:scale-105 transition-all duration-300 ease-out group"
                 aria-label="Appeler la pépinière"
               >
-                <span className="text-sm font-medium text-center">+32 10 65 54 44</span>
+                <span className="text-sm leading-relaxed text-center">+32 10 65 54 44</span>
               </a>
             </div>
           </div>
@@ -67,14 +67,14 @@ export default function Footer() {
               <a
                 href="#"
                 aria-label="Visitez notre page Facebook"
-                className="text-green-700 hover:text-green-800 text-xl hover:scale-110 transition-all duration-200 p-2 rounded-full hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-green-200"
+                className="text-green-700 hover:text-green-900 text-xl hover:scale-110 transition-all duration-200 p-2 rounded-full hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-green-200"
               >
                 <FaFacebookF />
               </a>
               <a
                 href="#"
                 aria-label="Suivez-nous sur Instagram"
-                className="text-green-700 hover:text-green-800 text-xl hover:scale-110 transition-all duration-200 p-2 rounded-full hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-green-200"
+                className="text-green-700 hover:text-green-900 text-xl hover:scale-110 transition-all duration-200 p-2 rounded-full hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-green-200"
               >
                 <FaInstagram />
               </a>
