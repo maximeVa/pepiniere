@@ -228,7 +228,7 @@ Les bambous **fargesia** sont non traçants et peuvent donc être placés en ple
 **L'avantage :**
 - La "fleur" s'abîme moins vite qu'une fragile pétale.
 `,
-    image: "/masonry/11.jpg",
+    image: "/masonry/10.jpg",
     category: "Arbres",
     type: "Cornus",
   },
@@ -242,7 +242,7 @@ Les bambous **fargesia** sont non traçants et peuvent donc être placés en ple
 - Venez découvrir notre collection d'acers, elle vaut le détour !
 - Et pour ne rien gâcher au plaisir, nos prix sont tout doux.
 `,
-    image: "/masonry/12.jpg",
+    image: "/masonry/10.jpg",
     category: "Arbres",
     type: "Acer",
   },

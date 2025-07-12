@@ -74,7 +74,7 @@ export default function PlantCatalog({ families }: PlantCatalogProps) {
 
   // Pills style for filters
   const pillBase =
-    "inline-flex items-center px-3 py-1.5 md:px-4 md:py-2 rounded-full font-medium bg-white border border-gray-200 shadow-sm transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-green-200 text-gray-700";
+    "inline-flex items-center px-3 py-1.5 md:px-4 md:py-2 rounded-full font-medium bg-white border border-gray-200 shadow-sm transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-green-200 text-gray-700 hover:bg-green-50 hover:text-green-800 hover:shadow-lg hover:-translate-y-1 hover:ring-2 hover:ring-green-200 focus-visible:bg-green-50 focus-visible:text-green-800 focus-visible:shadow-lg focus-visible:-translate-y-1 focus-visible:ring-2 focus-visible:ring-green-200 transition-all duration-300 ease-out";
   const pillActive =
     "!bg-green-600 !text-white !border-green-600 shadow-md";
 
@@ -124,12 +124,12 @@ export default function PlantCatalog({ families }: PlantCatalogProps) {
               className="w-full max-w-4xl mx-auto bg-white/95 rounded-2xl border border-gray-100 flex flex-col md:flex-row-reverse items-stretch md:items-center gap-0 md:gap-0 shadow-none overflow-hidden"
             >
               {/* Image au-dessus sur mobile, à droite sur desktop */}
-              <div className="w-full md:w-1/2 flex items-center justify-center bg-gray-50 p-0 md:p-0">
-                <div className="w-full aspect-[4/3] md:aspect-[4/3] h-40 md:h-72 overflow-hidden flex items-center justify-center">
+              <div className="w-full md:w-1/2 flex items-center justify-center bg-gray-50 md:bg-transparent p-0 md:p-0">
+                <div className="w-full aspect-[4/3] md:aspect-[4/3] h-52 md:h-72 overflow-hidden flex items-center justify-center rounded-none md:rounded-3xl md:shadow-2xl">
                   <img
                     src={plant.image}
                     alt={plant.title}
-                    className="w-full h-full object-cover object-center rounded-none md:rounded-r-2xl border-0"
+                    className="w-full h-full object-cover object-center rounded-none md:rounded-3xl border-0"
                     loading="lazy"
                   />
                 </div>
@@ -141,12 +141,12 @@ export default function PlantCatalog({ families }: PlantCatalogProps) {
                 </h3>
                 <ReactMarkdown
                   components={{
-                    ul: ({node, ...props}) => <ul className="list-disc pl-6 mb-2" {...props} />,
-                    ol: ({node, ...props}) => <ol className="list-decimal pl-6 mb-2" {...props} />,
-                    li: ({node, ...props}) => <li className="mb-1" {...props} />,
-                    strong: ({node, ...props}) => <strong className="text-green-800 font-semibold" {...props} />,
-                    em: ({node, ...props}) => <em className="text-green-700" {...props} />,
-                    p: ({node, ...props}) => <p className="mb-2 text-sm md:text-base text-gray-800 leading-relaxed" {...props} />,
+                    ul: ({ node, ...props }) => <ul className="list-disc pl-6 mb-2" {...props} />,
+                    ol: ({ node, ...props }) => <ol className="list-decimal pl-6 mb-2" {...props} />,
+                    li: ({ node, ...props }) => <li className="mb-1" {...props} />,
+                    strong: ({ node, ...props }) => <strong className="text-green-800 font-semibold" {...props} />,
+                    em: ({ node, ...props }) => <em className="text-green-700" {...props} />,
+                    p: ({ node, ...props }) => <p className="mb-2 text-sm md:text-base text-gray-800 leading-relaxed" {...props} />,
                   }}
                 >
                   {plant.description}
@@ -168,7 +168,7 @@ export default function PlantCatalog({ families }: PlantCatalogProps) {
             className="rounded-full shadow-md cursor-pointer"
           >
             <span className="sr-only">Précédent</span>
-            <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M13 16l-4-4 4-4" stroke="#166534" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M13 16l-4-4 4-4" stroke="#166534" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </Button>
           {Array.from({ length: totalPages }, (_, i) => (
             <Button
@@ -191,10 +191,10 @@ export default function PlantCatalog({ families }: PlantCatalogProps) {
             className="rounded-full shadow-md cursor-pointer"
           >
             <span className="sr-only">Suivant</span>
-            <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M7 4l4 4-4 4" stroke="#166534" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M7 4l4 4-4 4" stroke="#166534" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </Button>
         </div>
       )}
     </section>
   );
-} 
+}  
