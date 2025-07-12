@@ -120,7 +120,7 @@ export default function PlantCatalog({ families }: PlantCatalogProps) {
         ))}
       </div>
       {/* Grille éditoriale corrigée pour desktop */}
-      <div className="flex flex-col gap-8 w-full max-w-7xl mx-auto">
+      <div className="flex flex-col gap-10 w-full max-w-7xl mx-auto">
         {paginatedPlants.length === 0 ? (
           <div className="text-center text-muted-foreground py-12">
             Aucun résultat pour ces filtres.
@@ -129,16 +129,18 @@ export default function PlantCatalog({ families }: PlantCatalogProps) {
           paginatedPlants.map((plant: PlantFamily, idx) => (
             <div
               key={plant.id}
-              className="w-full max-w-4xl mx-auto bg-white/95 rounded-2xl border border-gray-100 flex flex-col md:flex-row-reverse items-stretch md:items-center gap-0 md:gap-0 shadow-none overflow-hidden"
+              className="w-full max-w-4xl mx-auto bg-white/95 rounded-2xl border border-gray-100 flex flex-col md:flex-row-reverse items-stretch md:items-center gap-0 md:gap-0 shadow-sm overflow-hidden"
             >
               {/* Image au-dessus sur mobile, à droite sur desktop */}
               <div className="w-full md:w-1/2 flex items-center justify-center bg-gray-50 md:bg-transparent p-0 md:p-0">
-                <div className="w-full aspect-[4/3] md:aspect-[4/3] h-52 md:h-72 overflow-hidden flex items-center justify-center rounded-none md:rounded-3xl md:shadow-2xl">
+                <div
+                  className="w-full aspect-[4/3] md:aspect-[4/3] h-52 md:h-72 overflow-hidden flex items-center justify-center rounded-none md:rounded-tl-3xl md:rounded-bl-3xl"
+                >
                   <img
                     src={plant.image}
                     alt={plant.title}
-                    className="w-full h-full object-cover object-center rounded-none md:rounded-3xl border-0"
                     loading="lazy"
+                    className="w-full h-full object-cover object-center border-0 rounded-none md:rounded-tl-3xl md:rounded-bl-3xl"
                   />
                 </div>
               </div>
@@ -230,8 +232,8 @@ export default function PlantCatalog({ families }: PlantCatalogProps) {
                   onClick={() => setPage(pageNum as number)}
                   aria-current={page === pageNum ? "page" : undefined}
                   className={`rounded-full w-10 h-10 flex items-center justify-center font-bold border transition-all duration-300 ease-out cursor-pointer focus:outline-none ${page === pageNum
-                      ? 'bg-green-600 text-white border-green-600 shadow-xl transform scale-110'
-                      : 'bg-white text-green-800 border-gray-200 shadow-md hover:bg-green-50 hover:shadow-lg hover:-translate-y-1 hover:ring-2 hover:ring-green-200 focus-visible:bg-green-50 focus-visible:text-green-800 focus-visible:shadow-lg focus-visible:-translate-y-1 focus-visible:ring-2 focus-visible:ring-green-200'
+                    ? 'bg-green-600 text-white border-green-600 shadow-xl transform scale-110'
+                    : 'bg-white text-green-800 border-gray-200 shadow-md hover:bg-green-50 hover:shadow-lg hover:-translate-y-1 hover:ring-2 hover:ring-green-200 focus-visible:bg-green-50 focus-visible:text-green-800 focus-visible:shadow-lg focus-visible:-translate-y-1 focus-visible:ring-2 focus-visible:ring-green-200'
                     }`}
                 >
                   {pageNum}
@@ -265,6 +267,6 @@ export default function PlantCatalog({ families }: PlantCatalogProps) {
           </button>
         </div>
       )}
-    </section>  
+    </section>
   );
 }
