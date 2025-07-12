@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useMemo, useState, useRef, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 import ReactMarkdown from "react-markdown";
 import { usePathname } from 'next/navigation';
 
@@ -266,6 +265,6 @@ export default function PlantCatalog({ families }: PlantCatalogProps) {
           </button>
         </div>
       )}
-    </section>
+    </section>  
   );
 }

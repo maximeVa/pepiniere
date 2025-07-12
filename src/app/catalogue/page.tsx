@@ -2,6 +2,7 @@ import PlantCatalog from '@/components/PlantCatalog';
 import { plantFamilies } from '@/data/plant-catalog';
 import Image from 'next/image';
 import { playfair } from '../layout';
+import Footer from '@/components/Footer';
 
 export default function CataloguePage() {
   return (
@@ -30,6 +31,7 @@ export default function CataloguePage() {
         </h2>
       </div>
       <PlantCatalog families={plantFamilies} />
+      <Footer/>
     </main>
   );
 } 
