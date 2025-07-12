@@ -57,14 +57,23 @@ export default function PlantCatalog({ families }: PlantCatalogProps) {
       isFirstRender.current = false;
       return;
     }
-    if (searchBarRef.current) {
-      // Récupère dynamiquement la hauteur du header sticky
-      const header = document.querySelector('header');
-      const headerHeight = header ? header.getBoundingClientRect().height : 0;
-      // On vise le haut de la barre de recherche, avec une marge supplémentaire (24px)
-      const y = searchBarRef.current.getBoundingClientRect().top + window.scrollY - headerHeight - 24;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
+
+    // Utiliser setTimeout pour s'assurer que le DOM est mis à jour
+    const scrollToTop = () => {
+      if (searchBarRef.current) {
+        // Récupère dynamiquement la hauteur du header sticky
+        const header = document.querySelector('header');
+        const headerHeight = header ? header.getBoundingClientRect().height : 0;
+        // On vise le haut de la barre de recherche, avec une marge supplémentaire (24px)
+        const y = searchBarRef.current.getBoundingClientRect().top + window.scrollY - headerHeight - 24;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    };
+
+    // Petit délai pour s'assurer que le rendu est terminé
+    const timeoutId = setTimeout(scrollToTop, 100);
+
+    return () => clearTimeout(timeoutId);
   }, [page]);
 
   // Réinitialise le scroll ciblé à chaque navigation
@@ -156,45 +165,107 @@ export default function PlantCatalog({ families }: PlantCatalogProps) {
           ))
         )}
       </div>
-      {/* Pagination élégante */}
+      {/* Pagination optimisée et corrigée */}
       {totalPages > 1 && (
         <div className="flex justify-center items-center gap-2 mt-10">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setPage((p) => Math.max(1, p - 1))}
+          {/* Flèche précédente */}
+          <button
+            onClick={() => {
+              const newPage = Math.max(1, page - 1);
+              setPage(newPage);
+              // Force le scroll
+              setTimeout(() => {
+                if (searchBarRef.current) {
+                  const header = document.querySelector('header');
+                  const headerHeight = header ? header.getBoundingClientRect().height : 0;
+                  const y = searchBarRef.current.getBoundingClientRect().top + window.scrollY - headerHeight - 24;
+                  window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+              }, 50);
+            }}
             disabled={page === 1}
             aria-label="Page précédente"
-            className="rounded-full shadow-md cursor-pointer"
+            className="rounded-full w-10 h-10 flex items-center justify-center bg-white border border-gray-200 shadow-md text-green-800 transition-all duration-300 ease-out cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed hover:bg-green-50 hover:shadow-lg hover:-translate-y-1 hover:ring-2 hover:ring-green-200 focus-visible:ring-2 focus-visible:ring-green-200 focus-visible:outline-none"
           >
-            <span className="sr-only">Précédent</span>
-            <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M13 16l-4-4 4-4" stroke="#166534" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
-          </Button>
-          {Array.from({ length: totalPages }, (_, i) => (
-            <Button
-              key={i + 1}
-              variant={page === i + 1 ? "secondary" : "outline"}
-              size="sm"
-              onClick={() => setPage(i + 1)}
-              aria-current={page === i + 1 ? "page" : undefined}
-              className="rounded-full shadow-md font-bold cursor-pointer"
-            >
-              {i + 1}
-            </Button>
-          ))}
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          {/* Numéros de page avec gestion intelligente */}
+          {(() => {
+            const pageNumbers = [];
+            const showEllipsis = totalPages > 7;
+
+            if (!showEllipsis) {
+              // Afficher toutes les pages si moins de 8 pages
+              for (let i = 1; i <= totalPages; i++) {
+                pageNumbers.push(i);
+              }
+            } else {
+              // Logique pour les ellipses
+              if (page <= 3) {
+                // Début: 1, 2, 3, 4, ..., dernière
+                pageNumbers.push(1, 2, 3, 4, '...', totalPages);
+              } else if (page >= totalPages - 2) {
+                // Fin: 1, ..., avant-avant-dernière, avant-dernière, dernière
+                pageNumbers.push(1, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+              } else {
+                // Milieu: 1, ..., page-1, page, page+1, ..., dernière
+                pageNumbers.push(1, '...', page - 1, page, page + 1, '...', totalPages);
+              }
+            }
+
+            return pageNumbers.map((pageNum, index) => {
+              if (pageNum === '...') {
+                return (
+                  <span key={`ellipsis-${index}`} className="px-2 py-1 text-gray-500">
+                    ...
+                  </span>
+                );
+              }
+
+              return (
+                <button
+                  key={pageNum}
+                  onClick={() => setPage(pageNum as number)}
+                  aria-current={page === pageNum ? "page" : undefined}
+                  className={`rounded-full w-10 h-10 flex items-center justify-center font-bold border transition-all duration-300 ease-out cursor-pointer focus:outline-none ${page === pageNum
+                      ? 'bg-green-600 text-white border-green-600 shadow-xl transform scale-110'
+                      : 'bg-white text-green-800 border-gray-200 shadow-md hover:bg-green-50 hover:shadow-lg hover:-translate-y-1 hover:ring-2 hover:ring-green-200 focus-visible:bg-green-50 focus-visible:text-green-800 focus-visible:shadow-lg focus-visible:-translate-y-1 focus-visible:ring-2 focus-visible:ring-green-200'
+                    }`}
+                >
+                  {pageNum}
+                </button>
+              );
+            });
+          })()}
+
+          {/* Flèche suivante */}
+          <button
+            onClick={() => {
+              const newPage = Math.min(totalPages, page + 1);
+              setPage(newPage);
+              // Force le scroll
+              setTimeout(() => {
+                if (searchBarRef.current) {
+                  const header = document.querySelector('header');
+                  const headerHeight = header ? header.getBoundingClientRect().height : 0;
+                  const y = searchBarRef.current.getBoundingClientRect().top + window.scrollY - headerHeight - 24;
+                  window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+              }, 50);
+            }}
             disabled={page === totalPages}
             aria-label="Page suivante"
-            className="rounded-full shadow-md cursor-pointer"
+            className="rounded-full w-10 h-10 flex items-center justify-center bg-white border border-gray-200 shadow-md text-green-800 transition-all duration-300 ease-out cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed hover:bg-green-50 hover:shadow-lg hover:-translate-y-1 hover:ring-2 hover:ring-green-200 focus-visible:ring-2 focus-visible:ring-green-200 focus-visible:outline-none"
           >
-            <span className="sr-only">Suivant</span>
-            <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M7 4l4 4-4 4" stroke="#166534" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
-          </Button>
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
         </div>
       )}
     </section>
   );
-}  
+}
