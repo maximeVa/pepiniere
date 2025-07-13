@@ -34,13 +34,13 @@ export default function SeasonCarousel({ photos }: SeasonCarouselProps) {
               key={idx}
               style={{ minHeight: 320, height: 380 }}
             >
-              <div className="order-2 md:order-1 w-full md:w-1/2 px-4 py-6 md:py-8 bg-white border-t-0 md:border border-gray-200 rounded-b-lg md:rounded-l-lg md:rounded-br-none shadow-sm h-full z-10 relative flex flex-col gap-4">
+              <div className="order-2 md:order-1 w-full md:w-1/2 px-2 md:px-4 py-4 md:py-8 bg-white border-t-0 md:border border-gray-200 rounded-b-lg md:rounded-l-lg md:rounded-br-none shadow-sm h-full z-10 relative flex flex-col gap-2 md:gap-4">
                 {photo.title && (
                   <>
-                    <h2 className={`text-3xl md:text-5xl font-medium tracking-wide text-[#7C5A2A] mb-3 md:mb-5 leading-tight text-center md:text-left ${playfair.className} drop-shadow-md animate-fade-in`}>
+                    <h2 className={`text-2xl md:text-5xl font-medium tracking-wide text-[#7C5A2A] mb-2 md:mb-5 leading-tight text-center md:text-left ${playfair.className} drop-shadow-md animate-fade-in`}>
                       {photo.title}
                     </h2>
-                    <div className="w-24 h-1 bg-gradient-to-r from-[#B97A3A] to-[#7C5A2A] rounded-full mb-6 mx-auto md:mx-0"></div>
+                    <div className="w-16 md:w-24 h-1 bg-gradient-to-r from-[#B97A3A] to-[#7C5A2A] rounded-full mb-4 md:mb-6 mx-auto md:mx-0"></div>
                   </>
                 )}
                 {photo.description && (
