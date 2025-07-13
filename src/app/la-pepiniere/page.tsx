@@ -82,6 +82,8 @@ export default function LaPepiniere() {
               { src: "/masonry/8.jpg" },
               { src: "/masonry/9.jpg" },
               { src: "/masonry/10.jpg" },
+              { src: "/masonry/4.avif" },
+              { src: "/masonry/6.avif" },
             ]}
           />
         </div>
