@@ -44,10 +44,10 @@ export default function SeasonCarousel({ photos }: SeasonCarouselProps) {
               <div className="order-2 md:order-1 w-full md:w-1/2 px-2 md:px-4 py-4 md:py-8 bg-white border-t-0 md:border border-gray-200 rounded-b-lg md:rounded-l-lg md:rounded-br-none shadow-sm h-full z-10 relative flex flex-col gap-2 md:gap-4">
                 {photo.title && (
                   <>
-                    <h2 className={`text-2xl md:text-5xl font-medium tracking-wide text-[#7C5A2A] mb-2 md:mb-5 leading-tight text-center md:text-left ${playfair.className} drop-shadow-md animate-fade-in`}>
+                    <h2 className={`text-2xl md:text-5xl font-medium tracking-wide text-green-900 mb-2 md:mb-5 leading-tight text-center md:text-left ${playfair.className} drop-shadow-md animate-fade-in`}>
                       {photo.title}
                     </h2>
-                    <div className="w-16 md:w-24 h-1 bg-gradient-to-r from-[#B97A3A] to-[#7C5A2A] rounded-full mb-4 md:mb-6 mx-auto md:mx-0"></div>
+                    <div className="w-16 md:w-24 h-1 bg-green-900 rounded-full mb-4 md:mb-6 mx-auto md:mx-0"></div>
                   </>
                 )}
                 {photo.description && (
@@ -57,7 +57,7 @@ export default function SeasonCarousel({ photos }: SeasonCarouselProps) {
                         ul: ({ node, ...props }) => <ul className="list-disc pl-6 mb-2" {...props} />,
                         ol: ({ node, ...props }) => <ol className="list-decimal pl-6 mb-2" {...props} />,
                         li: ({ node, ...props }) => <li className="mb-1" {...props} />,
-                        strong: ({ node, ...props }) => <strong className="text-green-800 font-semibold" {...props} />,
+                        strong: ({ node, ...props }) => <strong className="text-green-900 font-semibold" {...props} />,
                         em: ({ node, ...props }) => <em className="text-green-700" {...props} />,
                         p: ({ node, ...props }) => <p className="mb-2 text-base md:text-lg text-green-900 leading-relaxed" {...props} />,
                       }}
