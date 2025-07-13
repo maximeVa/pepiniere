@@ -1,9 +1,11 @@
 'use client'
 
-import React, { useCallback } from "react";
+import React, { useCallback, useRef } from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from 'embla-carousel-autoplay';
 import { playfair } from '../app/fonts';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import ReactMarkdown from "react-markdown";
 
 interface SeasonPhoto {
   src: string;
@@ -16,23 +18,28 @@ interface SeasonCarouselProps {
   photos: SeasonPhoto[];
 }
 
-const arrowBase = "absolute top-1/2 transform -translate-y-1/2 z-30 bg-opacity-80 bg-white border border-green-900 shadow-lg rounded-full flex items-center justify-center w-12 h-12 transition-transform duration-200 hover:scale-102 cursor-pointer";
+const arrowBase = "absolute top-1/2 transform -translate-y-1/2 z-10 md:z-30 flex items-center justify-center w-16 h-10 bg-white/70 rounded-full transition hover:bg-white/90 cursor-pointer";
 
 export default function SeasonCarousel({ photos }: SeasonCarouselProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center' });
+  const autoplayRef = useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: true })
+  );
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: 'center' },
+    [autoplayRef.current]
+  );
 
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
   return (
-    <div className="w-full max-w-5xl mx-auto my-12 bg-white rounded-xl overflow-hidden shadow-lg relative">
+    <div className="w-full max-w-6xl mx-auto my-12 bg-white rounded-xl overflow-hidden shadow-lg relative">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {photos.map((photo, idx) => (
             <div
               className="flex flex-col md:flex-row items-center justify-center min-w-0 flex-[0_0_100%]"
               key={idx}
-              style={{ minHeight: 320, height: 380 }}
             >
               <div className="order-2 md:order-1 w-full md:w-1/2 px-2 md:px-4 py-4 md:py-8 bg-white border-t-0 md:border border-gray-200 rounded-b-lg md:rounded-l-lg md:rounded-br-none shadow-sm h-full z-10 relative flex flex-col gap-2 md:gap-4">
                 {photo.title && (
@@ -44,18 +51,23 @@ export default function SeasonCarousel({ photos }: SeasonCarouselProps) {
                   </>
                 )}
                 {photo.description && (
-                  <p className="text-sm md:text-base text-green-900 font-medium leading-relaxed text-center md:text-left max-w-2xl mb-2 md:mb-0 animate-fade-in">
-                    {photo.description.split(/(\*\*.+?\*\*)/g).map((part, i) =>
-                      part.startsWith('**') && part.endsWith('**') ? (
-                        <span key={i} className="font-bold text-green-900">{part.replace(/\*\*/g, '')}</span>
-                      ) : (
-                        <span key={i}>{part}</span>
-                      )
-                    )}
-                  </p>
+                  <div className="text-base md:text-lg text-green-900 font-medium leading-relaxed text-center md:text-left max-w-3xl mb-2 md:mb-0 animate-fade-in">
+                    <ReactMarkdown
+                      components={{
+                        ul: ({ node, ...props }) => <ul className="list-disc pl-6 mb-2" {...props} />,
+                        ol: ({ node, ...props }) => <ol className="list-decimal pl-6 mb-2" {...props} />,
+                        li: ({ node, ...props }) => <li className="mb-1" {...props} />,
+                        strong: ({ node, ...props }) => <strong className="text-green-800 font-semibold" {...props} />,
+                        em: ({ node, ...props }) => <em className="text-green-700" {...props} />,
+                        p: ({ node, ...props }) => <p className="mb-2 text-base md:text-lg text-green-900 leading-relaxed" {...props} />,
+                      }}
+                    >
+                      {photo.description}
+                    </ReactMarkdown>
+                  </div>
                 )}
               </div>
-              <div className="order-1 md:order-2 w-full md:w-1/2 flex justify-center items-center bg-white border-b-0 md:border border-gray-200 rounded-t-lg md:rounded-r-lg md:rounded-tl-none shadow-sm h-[220px] md:h-full relative">
+              <div className="order-1 md:order-2 w-full md:w-1/2 flex justify-center items-center bg-white border-b-0 md:border border-gray-200 rounded-t-lg md:rounded-r-lg md:rounded-tl-none shadow-sm h-[250px] md:h-[440px] relative">
                 <img
                   src={photo.src}
                   alt={photo.alt || photo.title || ''}
@@ -70,18 +82,18 @@ export default function SeasonCarousel({ photos }: SeasonCarouselProps) {
 
       {/* Flèches stylées en dehors du texte */}
       <button
-        className={`${arrowBase} left-4 md:left-2 opacity-50 hover:opacity-100 focus:opacity-100`}
+        className={`${arrowBase} -left-px opacity-50 hover:opacity-100 focus:opacity-100 rounded-l-none`}
         onClick={scrollPrev}
         aria-label="Précédent"
       >
-        <ChevronLeft size={24} className="text-green-900" />
+        <ArrowLeft size={24} className="text-black" />
       </button>
       <button
-        className={`${arrowBase} right-4 md:right-2 opacity-50 hover:opacity-100 focus:opacity-100`}
+        className={`${arrowBase} -right-px opacity-50 hover:opacity-100 focus:opacity-100 rounded-r-none`}
         onClick={scrollNext}
         aria-label="Suivant"
       >
-        <ChevronRight size={24} className="text-green-900" />
+        <ArrowRight size={24} className="text-black" />
       </button>
     </div>
   );

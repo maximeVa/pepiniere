@@ -18,22 +18,36 @@ const FALLBACK_IMAGES = [
 
 const saisonPhotos = [
   {
-    src: "/masonry/1.avif",
+    src: "/seasonCarousel/fleursAnnuelles2.avif",
+    alt: "Horaires d'été",
+    title: "Nous passons en horaire d'été",
+    description: `**Horaires d'été**
+
+- Mercredi au samedi : **9h00 à 18h00**
+- **Dimanche** : **9h00 à 13h00**
+
+*Profitez de nos conseils et de notre sélection toute la semaine !*`
+  },
+  {
+    src: "/seasonCarousel/bacAcierCorten.avif",
+    alt: "Bacs acier corten",
+    title: "Nous vendons des bacs en acier corten",
+    description: `**Bacs sur-mesure en acier corten**
+
+- Venez découvrir notre catalogue
+- Ou faites-nous faire vos bacs sur mesure
+
+*Robustesse, design et durabilité pour votre jardin !*`
+  },
+  {
+    src: "/seasonCarousel/fleursAnnuelles.avif",
     alt: "Fleurs annuelles",
     title: "C'est la saison des couleurs !",
-    description: "Nous avons un très large choix de fleurs annuelles pour garnir vos vasques et jardinières : géraniums, surfinias, bacopas, calibrachoas, biddens, verbenas, lobelias, ..."
-  },
-  {
-    src: "/masonry/2.avif",
-    alt: "Arbres et arbustes",
-    title: "Arbres et arbustes d'exception",
-    description: "Découvrez notre sélection d'arbres remarquables, d'arbustes fleuris et de plantes originales pour structurer et colorer votre jardin toute l'année."
-  },
-  {
-    src: "/masonry/3.avif",
-    alt: "Potager et vivaces",
-    title: "Potager et vivaces",
-    description: "Plantes potagères, aromatiques, vivaces et graminées : tout pour un jardin vivant, durable et gourmand."
+    description: `**Très large choix de fleurs annuelles** pour vos vasques et jardinières:
+  
+  - Géraniums, Surfinias, Bacopas, Calibrachoas, Biddens, Verbenas, Lobelias
+
+*De la couleur pour tous vos massifs et balconnières !*`
   }
 ];
 
