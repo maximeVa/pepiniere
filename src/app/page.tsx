@@ -8,11 +8,33 @@ import ScrollButton from '@/components/ScrollButton'
 import EntrepreneurBanner from "../components/EntrepreneurBanner";
 import Footer from '@/components/Footer'
 import { fetchCarouselImages } from '@/lib/carousel'
+import SeasonCarousel from '@/components/SeasonCarousel';
 
 const FALLBACK_IMAGES = [
   { src: '/carousel/heruSectionBackground.jpg', alt: 'Jardin 1' },
   { src: '/carousel/backgroundV2.jpg', alt: 'Jardin 2' },
   { src: '/carousel/background.jpg', alt: 'Jardin 3' },
+];
+
+const saisonPhotos = [
+  {
+    src: "/masonry/1.avif",
+    alt: "Fleurs annuelles",
+    title: "C'est la saison des couleurs !",
+    description: "Nous avons un très large choix de fleurs annuelles pour garnir vos vasques et jardinières : géraniums, surfinias, bacopas, calibrachoas, biddens, verbenas, lobelias, ..."
+  },
+  {
+    src: "/masonry/2.avif",
+    alt: "Arbres et arbustes",
+    title: "Arbres et arbustes d'exception",
+    description: "Découvrez notre sélection d'arbres remarquables, d'arbustes fleuris et de plantes originales pour structurer et colorer votre jardin toute l'année."
+  },
+  {
+    src: "/masonry/3.avif",
+    alt: "Potager et vivaces",
+    title: "Potager et vivaces",
+    description: "Plantes potagères, aromatiques, vivaces et graminées : tout pour un jardin vivant, durable et gourmand."
+  }
 ];
 
 export default async function HomePage() {
@@ -82,6 +104,9 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Carousel saisonnier juste sous le hero */}
+      <SeasonCarousel photos={saisonPhotos} />
 
       {/* Section Services - NOUVEAU */}
       <Services
