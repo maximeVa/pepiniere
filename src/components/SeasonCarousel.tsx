@@ -25,7 +25,7 @@ export default function SeasonCarousel({ photos }: SeasonCarouselProps) {
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
   return (
-    <div className="w-full max-w-5xl mx-auto my-12 border-t-2 border-b-2 border-gray-200 bg-white rounded-xl overflow-hidden shadow-lg relative">
+    <div className="w-full max-w-5xl mx-auto my-12 bg-white rounded-xl overflow-hidden shadow-lg relative">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {photos.map((photo, idx) => (
@@ -34,7 +34,7 @@ export default function SeasonCarousel({ photos }: SeasonCarouselProps) {
               key={idx}
               style={{ minHeight: 320, height: 380 }}
             >
-              <div className="w-full md:w-1/2 px-4 py-8 bg-white border border-gray-200 rounded-b-lg md:rounded-l-lg md:rounded-br-none shadow-sm h-full z-10 relative">
+              <div className="order-2 md:order-1 w-full md:w-1/2 px-4 py-6 md:py-8 bg-white border-t-0 md:border border-gray-200 rounded-b-lg md:rounded-l-lg md:rounded-br-none shadow-sm h-full z-10 relative flex flex-col gap-4">
                 {photo.title && (
                   <>
                     <h2 className={`text-3xl md:text-5xl font-medium tracking-wide text-[#7C5A2A] mb-3 md:mb-5 leading-tight text-center md:text-left ${playfair.className} drop-shadow-md animate-fade-in`}>
@@ -55,8 +55,7 @@ export default function SeasonCarousel({ photos }: SeasonCarouselProps) {
                   </p>
                 )}
               </div>
-
-              <div className="w-full md:w-1/2 flex justify-center items-center bg-white border border-gray-200 rounded-t-lg md:rounded-r-lg md:rounded-tl-none shadow-sm h-full relative">
+              <div className="order-1 md:order-2 w-full md:w-1/2 flex justify-center items-center bg-white border-b-0 md:border border-gray-200 rounded-t-lg md:rounded-r-lg md:rounded-tl-none shadow-sm h-[220px] md:h-full relative">
                 <img
                   src={photo.src}
                   alt={photo.alt || photo.title || ''}
