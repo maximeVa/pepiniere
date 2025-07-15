@@ -22,15 +22,44 @@ const arrowBase = "absolute top-1/2 transform -translate-y-1/2 z-10 md:z-30 flex
 
 export default function SeasonCarousel({ photos }: SeasonCarouselProps) {
   const autoplayRef = useRef(
-    Autoplay({ delay: 4000, stopOnInteraction: true })
+    Autoplay({ delay: 6000, stopOnInteraction: true })
   );
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: 'center' },
     [autoplayRef.current]
   );
 
-  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) {
+      emblaApi.scrollPrev();
+      if (autoplayRef.current && autoplayRef.current.reset) {
+        autoplayRef.current.reset();
+      }
+    }
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) {
+      emblaApi.scrollNext();
+      if (autoplayRef.current && autoplayRef.current.reset) {
+        autoplayRef.current.reset();
+      }
+    }
+  }, [emblaApi]);
+
+  // Reset autoplay timer on manual scroll (drag or swipe)
+  React.useEffect(() => {
+    if (!emblaApi) return;
+    const onUserInteraction = () => {
+      if (autoplayRef.current && autoplayRef.current.reset) {
+        autoplayRef.current.reset();
+      }
+    };
+    emblaApi.on('pointerUp', onUserInteraction);
+    return () => {
+      emblaApi.off('pointerUp', onUserInteraction);
+    };
+  }, [emblaApi]);
 
   return (
     <div className="w-full max-w-6xl mx-auto my-12 bg-white rounded-xl overflow-hidden shadow-lg relative">
