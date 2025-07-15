@@ -153,11 +153,14 @@ export default async function HomePage() {
       />
 
       {/* Titre galerie masonry */}
+      {/*
       <div className="w-full flex flex-col items-center mt-12 mb-6">
         <h2 className="text-2xl md:text-3xl font-semibold text-center">La pépinière en quelques photos ...</h2>
       </div>
+      
 
       {/* Section Galerie Masonry */}
+      {/*
       <section className="py-12 md:py-20">
         <MasonryGrid
           images={[
@@ -176,6 +179,7 @@ export default async function HomePage() {
           ]}
         />
       </section>
+      */}
 
       <EntrepreneurBanner
         imageUrl="/home/availabilityBanner.jpg"
