@@ -9,6 +9,7 @@ import EntrepreneurBanner from "../components/EntrepreneurBanner";
 import Footer from '@/components/Footer'
 import { fetchCarouselImages } from '@/lib/carousel'
 import SeasonCarousel from '@/components/SeasonCarousel';
+import ImageGallery from '@/components/ImageGallery';
 
 const FALLBACK_IMAGES = [
   { src: '/carousel/heruSectionBackground.jpg', alt: 'Jardin 1' },
@@ -151,6 +152,9 @@ export default async function HomePage() {
         subtitle="Contactez-nous pour toute demande ou prise de rendez-vous."
         phone="+32 10 65 54 44"
       />
+
+      {/* Grille temporaire d'images masonry (remplacée par le composant ImageGallery) */}
+      <ImageGallery />
 
       {/* Titre galerie masonry */}
       {/*
