@@ -64,9 +64,11 @@ export default async function HomePage() {
       <section className="relative w-full h-[100vh] flex items-center justify-center overflow-hidden">
         {/* Background Carousel */}
         <div className="absolute inset-0 z-0">
+          {/* Désactivation temporaire de l'autoplay du carousel (remettre à true pour réactiver) */}
           <Carousel
             images={carouselImages}
             className="absolute inset-0 w-full h-full object-cover brightness-60"
+            isEnableAutoPlay={false} // TEMP : autoplay désactivé temporairement, remettre à true pour réactiver
           />
         </div>
         {/* Hero Content Overlay */}

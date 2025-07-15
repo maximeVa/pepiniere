@@ -19,9 +19,11 @@ interface CarouselProps {
     images?: CarouselImage[];
     className?: string;
     style?: React.CSSProperties;
+    isEnableAutoPlay?: boolean; // Ajouté pour contrôle externe
+    isEnableLoop?: boolean;     // Ajouté pour contrôle externe
 }
 
-const Carousel: FC<CarouselProps> = ({ images = [], className = '', style }) => {
+const Carousel: FC<CarouselProps> = ({ images = [], className = '', style, isEnableAutoPlay = true, isEnableLoop = true }) => {
     return (
         <div className={className} style={style}>
             <BearCarousel
@@ -33,9 +35,9 @@ const Carousel: FC<CarouselProps> = ({ images = [], className = '', style }) => 
                         alt={img.alt || ''}
                     />
                 ))}
-                isEnableAutoPlay={true}
+                isEnableAutoPlay={isEnableAutoPlay}
                 autoPlayTime={4000}
-                isEnableLoop
+                isEnableLoop={isEnableLoop}
                 moveTime={1000}
             />
         </div>
